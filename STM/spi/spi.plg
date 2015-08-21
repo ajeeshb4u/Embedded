@@ -1,0 +1,114 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Personal\Documents\STM\spi\spi.uvproj
+Project File Date:  08/20/2015
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(108): warning:  #223-D: function "HAL_NVIC_SetPriorityGrouping" declared implicitly
+include/macros.h(108): error:  #20: identifier "NVIC_PRIORITYGROUP_4" is undefined
+include/macros.h(111): warning:  #223-D: function "HAL_InitTick" declared implicitly
+include/macros.h(114): warning:  #223-D: function "HAL_MspInit" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(109): error:  #20: identifier "NVIC_PRIORITYGROUP_4" is undefined
+include/macros.h(112): warning:  #223-D: function "HAL_InitTick" declared implicitly
+include/macros.h(115): warning:  #223-D: function "HAL_MspInit" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(109): error:  #20: identifier "NVIC_PRIORITYGROUP_4" is undefined
+include/macros.h(112): warning:  #223-D: function "HAL_InitTick" declared implicitly
+include/macros.h(115): warning:  #223-D: function "HAL_MspInit" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(112): warning:  #223-D: function "HAL_InitTick" declared implicitly
+include/macros.h(115): warning:  #223-D: function "HAL_MspInit" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_InitTick (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(112): warning:  #223-D: function "HAL_InitTick" declared implicitly
+include/macros.h(115): warning:  #223-D: function "HAL_MspInit" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_InitTick (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(112): warning:  #223-D: function "HAL_InitTick" declared implicitly
+include/macros.h(115): warning:  #223-D: function "HAL_MspInit" declared implicitly
+include/macros.h(137): error:  #159: declaration is incompatible with previous "HAL_InitTick" (declared at line 112)
+include/macros.h(140): warning:  #223-D: function "HAL_SYSTICK_Config" declared implicitly
+include/macros.h(140): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(143): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(101): warning:  #223-D: function "HAL_SYSTICK_Config" declared implicitly
+include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
+include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_SYSTICK_Config (referred from main.o).
+Target not created
