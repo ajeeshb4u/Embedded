@@ -1,0 +1,22 @@
+*** Creating Trace Output File 'timerprog.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup_stm32f10x_md.o"'
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '"system_stm32f10x.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup_stm32f10x_md.o" "main.o" "system_stm32f10x.o" 
+--strict --scatter "timerprog.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\timerprog.map" -o timerprog.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'timerprog.axf'
+### ADS-LD Command File: 'timerprog.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'timerprog.lnp', Handle=0x00000498
+### Writing '.lnp' file
+### ADS-LD Command file 'timerprog.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
