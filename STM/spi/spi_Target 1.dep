@@ -1,6 +1,6 @@
 Dependencies for Project 'spi', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_stm32f10x_md.s)(0x4F5858E4)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x --pd "STM32F10X_MD SETA 1" --list "startup_stm32f10x_md.lst" --xref -o "startup_stm32f10x_md.o" --depend "startup_stm32f10x_md.d")
-F (.\main.c)(0x55D597B2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_MD -D__USART1 -o "main.o" --omf_browse "main.crf" --depend "main.d")
+F (.\main.c)(0x55DBF543)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_MD -D__USART1 -o "main.o" --omf_browse "main.crf" --depend "main.d")
 I (C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h)(0x55B600C9)
 I (C:\Keil\ARM\CMSIS\Include\core_cm3.h)(0x50064CAA)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB0F5AC)
@@ -10,7 +10,7 @@ I (C:\Keil\ARM\Inc\ST\STM32F10x\system_stm32f10x.h)(0x4F585A24)
 I (include/def.h)(0x55D5813A)
 I (include/stm32f1xx_it.h)(0x55D46AD4)
 I (include/flash_def.h)(0x55D5814B)
-I (include/nvic_def.h)(0x55D59ECA)
+I (include/nvic_def.h)(0x55D5A183)
 I (include/Serial.h)(0x55D305BD)
 I (include/main.h)(0x55D440C2)
 I (include/macros.h)(0x55D5A090)

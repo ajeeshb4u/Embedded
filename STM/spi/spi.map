@@ -138,9 +138,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000000
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000075c, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000007b0, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000006b8, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x0000070c, Max: 0x00010000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -187,20 +187,20 @@ Memory Map of the image
     0x08000114   0x00000006   Code   RO          234    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0800011a   0x00000002   PAD
     0x0800011c   0x00000040   Code   RO            4    .text               startup_stm32f10x_md.o
-    0x0800015c   0x000001f8   Code   RO           12    .text               main.o
-    0x08000354   0x000001c8   Code   RO           91    .text               system_stm32f10x.o
-    0x0800051c   0x000000d8   Code   RO          121    .text               serial.o
-    0x080005f4   0x0000004e   Code   RO          151    .text               c_w.l(rt_memclr_w.o)
-    0x08000642   0x00000006   Code   RO          153    .text               c_w.l(heapauxi.o)
-    0x08000648   0x0000004a   Code   RO          173    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000692   0x0000000c   Code   RO          175    .text               c_w.l(exit.o)
-    0x0800069e   0x00000002   PAD
-    0x080006a0   0x00000008   Code   RO          183    .text               c_w.l(libspace.o)
-    0x080006a8   0x0000000c   Code   RO          242    .text               c_w.l(sys_exit.o)
-    0x080006b4   0x00000002   Code   RO          253    .text               c_w.l(use_no_semi.o)
-    0x080006b6   0x00000000   Code   RO          255    .text               c_w.l(indicate_semi.o)
-    0x080006b6   0x00000002   Data   RO           14    .constdata          main.o
-    0x080006b8   0x00000000   Data   RO          307    Region$$Table       anon$$obj.o
+    0x0800015c   0x0000024c   Code   RO           12    .text               main.o
+    0x080003a8   0x000001c8   Code   RO           91    .text               system_stm32f10x.o
+    0x08000570   0x000000d8   Code   RO          121    .text               serial.o
+    0x08000648   0x0000004e   Code   RO          151    .text               c_w.l(rt_memclr_w.o)
+    0x08000696   0x00000006   Code   RO          153    .text               c_w.l(heapauxi.o)
+    0x0800069c   0x0000004a   Code   RO          173    .text               c_w.l(sys_stackheap_outer.o)
+    0x080006e6   0x0000000c   Code   RO          175    .text               c_w.l(exit.o)
+    0x080006f2   0x00000002   PAD
+    0x080006f4   0x00000008   Code   RO          183    .text               c_w.l(libspace.o)
+    0x080006fc   0x0000000c   Code   RO          242    .text               c_w.l(sys_exit.o)
+    0x08000708   0x00000002   Code   RO          253    .text               c_w.l(use_no_semi.o)
+    0x0800070a   0x00000000   Code   RO          255    .text               c_w.l(indicate_semi.o)
+    0x0800070a   0x00000002   Data   RO           14    .constdata          main.o
+    0x0800070c   0x00000000   Data   RO          307    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000708, Max: 0x00005000, ABSOLUTE)
