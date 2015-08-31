@@ -7,7 +7,9 @@
 	
 #include "spi_def.h"	
 #include "nvic_def.h"
-	
+#include "stm32f1xx_hal_rcc.c"
+
+__weak void HAL_MspInit(void);
 	
 #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
 
@@ -23,7 +25,6 @@
 
 #define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
 
-#define POSITION_VAL(VAL)     (__CLZ(__RBIT(VAL))) 
 
 #define __HAL_RCC_SPI2_CLK_ENABLE()   do { \
                                         __IO uint32_t tmpreg; \
@@ -145,6 +146,18 @@ HAL_StatusTypeDef HAL_Init(void)
 
   /* Return function status */
   return HAL_OK;
+}
+
+
+/**
+  * @brief  Initializes the MSP.
+  * @retval None
+  */
+__weak void HAL_MspInit(void)
+{
+  /* NOTE : This function Should not be modified, when the callback is needed,
+            the HAL_MspInit could be implemented in the user file
+   */
 }
 
 

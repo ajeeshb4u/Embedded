@@ -41,20 +41,6 @@ spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
 spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
 spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
 Target not created
-Build target 'Target 1'
-compiling main.c...
-include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
-include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
-include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
-main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
-main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
-linking...
-spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
-Target not created
 Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
@@ -78,76 +64,9 @@ compiling main.c...
 include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
 include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
 include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
+include/macros.h(155): error:  #159: declaration is incompatible with previous "HAL_MspInit" (declared at line 144)
 main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
 main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
-main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
-include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
-include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
-main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
-main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
-include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
-include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
-main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
-main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
-include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
-include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
-main.c(114): error:  #20: identifier "RCC_ClkInitTypeDef" is undefined
-main.c(115): error:  #20: identifier "RCC_OscInitTypeDef" is undefined
-main.c(121): error:  #20: identifier "RCC_OSCILLATORTYPE_HSI" is undefined
-main.c(122): error:  #20: identifier "RCC_HSE_OFF" is undefined
-main.c(123): error:  #20: identifier "RCC_LSE_OFF" is undefined
-main.c(124): error:  #20: identifier "RCC_HSI_ON" is undefined
-main.c(125): error:  #20: identifier "RCC_HSICALIBRATION_DEFAULT" is undefined
-main.c(126): error:  #20: identifier "RCC_HSE_PREDIV_DIV1" is undefined
-main.c(127): error:  #20: identifier "RCC_PLL_ON" is undefined
-main.c(128): error:  #20: identifier "RCC_PLLSOURCE_HSI_DIV2" is undefined
-main.c(129): error:  #20: identifier "RCC_PLL_MUL16" is undefined
-main.c(138): error:  #20: identifier "RCC_CLOCKTYPE_SYSCLK" is undefined
-main.c(138): error:  #20: identifier "RCC_CLOCKTYPE_HCLK" is undefined
-main.c(138): error:  #20: identifier "RCC_CLOCKTYPE_PCLK1" is undefined
-main.c(138): error:  #20: identifier "RCC_CLOCKTYPE_PCLK2" is undefined
-main.c(139): error:  #20: identifier "RCC_SYSCLKSOURCE_PLLCLK" is undefined
-main.c(140): error:  #20: identifier "RCC_SYSCLK_DIV1" is undefined
-main.c(141): error:  #20: identifier "RCC_HCLK_DIV1" is undefined
-main.c(142): error:  #20: identifier "RCC_HCLK_DIV2" is undefined
 main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
 main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
 compiling system_stm32f10x.c...
@@ -156,9 +75,8 @@ Target not created
 Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
-include/macros.h(101): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
-include/macros.h(104): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
-include/macros.h(144): warning:  #223-D: function "HAL_MspInit" declared implicitly
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(105): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
 main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
 main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
 main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
@@ -166,7 +84,304 @@ main.c(159): warning:  #177-D: function "Buffercmp" was declared but never refer
 compiling system_stm32f10x.c...
 compiling serial.c...
 linking...
-spi.axf: Error: L6218E: Undefined symbol HAL_MspInit (referred from main.o).
 spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
 spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
 Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(105): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
+include/macros.h(145): warning:  #223-D: function "HAL_MspInit" declared implicitly
+include/macros.h(156): error:  #159: declaration is incompatible with previous "HAL_MspInit" (declared at line 145)
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(105): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
+include/macros.h(145): warning:  #223-D: function "HAL_MspInit" declared implicitly
+include/macros.h(156): error:  #159: declaration is incompatible with previous "HAL_MspInit" (declared at line 145)
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(105): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/nvic_def.h(38): warning:  #223-D: function "assert_param" declared implicitly
+include/nvic_def.h(38): warning:  #223-D: function "IS_NVIC_SUB_PRIORITY" declared implicitly
+include/nvic_def.h(39): warning:  #223-D: function "IS_NVIC_PREEMPTION_PRIORITY" declared implicitly
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol IS_NVIC_PREEMPTION_PRIORITY (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol IS_NVIC_SUB_PRIORITY (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol assert_param (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+include/macros.h(105): warning:  #223-D: function "HAL_NVIC_SetPriority" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_NVIC_SetPriority (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/nvic_def.h(82): warning:  #223-D: function "assert_param" declared implicitly
+include/nvic_def.h(82): warning:  #223-D: function "IS_NVIC_SUB_PRIORITY" declared implicitly
+include/nvic_def.h(83): warning:  #223-D: function "IS_NVIC_PREEMPTION_PRIORITY" declared implicitly
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol IS_NVIC_PREEMPTION_PRIORITY (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol IS_NVIC_SUB_PRIORITY (referred from main.o).
+spi.axf: Error: L6218E: Undefined symbol assert_param (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(102): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(103): warning:  #223-D: function "HAL_RCC_GetHCLKFreq" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol HAL_RCC_GetHCLKFreq (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(18): warning:  #223-D: function "HAL_RCC_GetSysClockFreq" declared implicitly
+include/stm32f1xx_hal_rcc.c(18): error:  #20: identifier "aAPBAHBPrescTable" is undefined
+include/stm32f1xx_hal_rcc.c(18): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.h(1228): error:  #159: declaration is incompatible with previous "HAL_RCC_GetSysClockFreq" (declared at line 18 of "include/stm32f1xx_hal_rcc.c")
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(53): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(54): error:  #20: identifier "RCC_PLLSOURCE_HSI_DIV2" is undefined
+include/stm32f1xx_hal_rcc.c(90): error:  #20: identifier "aAPBAHBPrescTable" is undefined
+include/stm32f1xx_hal_rcc.c(90): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(53): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(54): error:  #20: identifier "RCC_PLLSOURCE_HSI_DIV2" is undefined
+include/stm32f1xx_hal_rcc.c(90): error:  #20: identifier "aAPBAHBPrescTable" is undefined
+include/stm32f1xx_hal_rcc.c(90): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(53): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(90): error:  #20: identifier "aAPBAHBPrescTable" is undefined
+include/stm32f1xx_hal_rcc.c(90): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(61): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(98): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol POSITION_VAL (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(61): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(98): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol POSITION_VAL (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(61): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(98): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol POSITION_VAL (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(61): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(98): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol POSITION_VAL (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(61): warning:  #223-D: function "POSITION_VAL" declared implicitly
+include/stm32f1xx_hal_rcc.c(98): warning:  #223-D: function "POSITION_VAL" declared implicitly
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol POSITION_VAL (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=2038 RO-data=286 RW-data=164 ZI-data=1636  
+"spi.axf" - 0 Error(s), 4 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=2038 RO-data=286 RW-data=164 ZI-data=1636  
+"spi.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=2038 RO-data=286 RW-data=164 ZI-data=1636  
+"spi.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(114): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(115): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(86): warning:  #177-D: function "Error_Handler" was declared but never referenced
+main.c(159): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=2038 RO-data=286 RW-data=164 ZI-data=1636  
+"spi.axf" - 0 Error(s), 5 Warning(s).

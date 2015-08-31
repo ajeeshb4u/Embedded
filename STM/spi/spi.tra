@@ -14,10 +14,10 @@
 ### ADS-LD Output File: 'spi.axf'
 ### ADS-LD Command File: 'spi.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'spi.lnp', Handle=0x00000488
+### Creating CmdFile 'spi.lnp', Handle=0x00000548
 ### Writing '.lnp' file
 ### ADS-LD Command file 'spi.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
-### ADS-LD: executed with 3 errors
+### ADS-LD: executed with 0 errors
 ### Updating obj list
 ### LDADS_file() completed.

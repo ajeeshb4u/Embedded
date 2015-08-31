@@ -18,6 +18,7 @@
                                                                  0 bits for subpriority */
 
 
+
 /**
   * @brief  Sets the priority grouping field (pre-emption priority and subpriority)
   *         using the required unlock sequence.
@@ -59,5 +60,31 @@ uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb)
    return SysTick_Config(TicksNumb);
 }
 
+
+/**
+  * @brief  Sets the priority of an interrupt.
+  * @param  IRQn: External interrupt number
+  *         This parameter can be an enumerator of IRQn_Type enumeration
+  *         (For the complete STM32 Devices IRQ Channels list, please refer to the appropriate CMSIS device file (stm32f10xxx.h))
+  * @param  PreemptPriority: The pre-emption priority for the IRQn channel.
+  *         This parameter can be a value between 0 and 15
+  *         A lower priority value indicates a higher priority 
+  * @param  SubPriority: the subpriority level for the IRQ channel.
+  *         This parameter can be a value between 0 and 15
+  *         A lower priority value indicates a higher priority.          
+  * @retval None
+  */
+void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority)
+{
+  uint32_t prioritygroup = 0x00;
+  
+  /* Check the parameters */
+  //assert_param(IS_NVIC_SUB_PRIORITY(SubPriority));
+  //assert_param(IS_NVIC_PREEMPTION_PRIORITY(PreemptPriority));
+  
+  prioritygroup = NVIC_GetPriorityGrouping();
+  
+  NVIC_SetPriority(IRQn, NVIC_EncodePriority(prioritygroup, PreemptPriority, SubPriority));
+}
 
 #endif
