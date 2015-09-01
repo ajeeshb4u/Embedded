@@ -43,6 +43,10 @@
  extern "C" {
 #endif
 
+	 #define UNUSED(x) ((void)(x))
+
+	 
+
 /* Includes ------------------------------------------------------------------*/
 //#include "stm32f1xx_hal_def.h"
 

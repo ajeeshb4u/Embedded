@@ -40,6 +40,14 @@ int main(void)
      */
 HAL_Init();
 	
+/* Configure the system clock to 64 MHz */
+SystemClock_Config();
+	
+/* Configure LED2 */
+BSP_LED_Init(LED2);
+/* After removing all the errors.... change the led pin to PA0 */
+
+	
 SER_Init();
 
 RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
