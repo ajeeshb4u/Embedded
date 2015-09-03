@@ -48,6 +48,81 @@ typedef struct
 }SPI_InitTypeDef;
 
 
+/** @defgroup SPI_BaudRate_Prescaler SPI BaudRate Prescaler
+  * @{
+  */
+#define SPI_BAUDRATEPRESCALER_2         ((uint32_t)0x00000000)
+#define SPI_BAUDRATEPRESCALER_4         ((uint32_t)SPI_CR1_BR_0)
+#define SPI_BAUDRATEPRESCALER_8         ((uint32_t)SPI_CR1_BR_1)
+#define SPI_BAUDRATEPRESCALER_16        ((uint32_t)SPI_CR1_BR_1 | SPI_CR1_BR_0)
+#define SPI_BAUDRATEPRESCALER_32        ((uint32_t)SPI_CR1_BR_2)
+#define SPI_BAUDRATEPRESCALER_64        ((uint32_t)SPI_CR1_BR_2 | SPI_CR1_BR_0)
+#define SPI_BAUDRATEPRESCALER_128       ((uint32_t)SPI_CR1_BR_2 | SPI_CR1_BR_1)
+#define SPI_BAUDRATEPRESCALER_256       ((uint32_t)SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0)
+
+/** @defgroup SPI_Direction_mode SPI Direction mode
+  * @{
+  */
+#define SPI_DIRECTION_2LINES            ((uint32_t)0x00000000)
+#define SPI_DIRECTION_2LINES_RXONLY     SPI_CR1_RXONLY
+#define SPI_DIRECTION_1LINE             SPI_CR1_BIDIMODE
+
+
+/** @defgroup SPI_Clock_Phase SPI Clock Phase
+  * @{
+  */
+#define SPI_PHASE_1EDGE                 ((uint32_t)0x00000000)
+#define SPI_PHASE_2EDGE                 SPI_CR1_CPHA
+
+
+/** @defgroup SPI_Clock_Polarity SPI Clock Polarity
+  * @{
+  */
+#define SPI_POLARITY_LOW                ((uint32_t)0x00000000)
+#define SPI_POLARITY_HIGH               SPI_CR1_CPOL
+
+/** @defgroup SPI_data_size SPI data size
+  * @{
+  */
+#define SPI_DATASIZE_8BIT               ((uint32_t)0x00000000)
+#define SPI_DATASIZE_16BIT              SPI_CR1_DFF
+
+/** @defgroup SPI_MSB_LSB_transmission SPI MSB LSB transmission
+  * @{
+  */
+#define SPI_FIRSTBIT_MSB                ((uint32_t)0x00000000)
+#define SPI_FIRSTBIT_LSB                SPI_CR1_LSBFIRST
+
+/** @defgroup SPI_TI_mode SPI TI mode disable
+  * @brief  SPI TI Mode not supported for STM32F1xx family 
+  * @{
+  */
+#define SPI_TIMODE_DISABLE             ((uint32_t)0x00000000)
+
+/** @defgroup SPI_CRC_Calculation SPI CRC Calculation
+  * @{
+  */
+#define SPI_CRCCALCULATION_DISABLE      ((uint32_t)0x00000000)
+#define SPI_CRCCALCULATION_ENABLE       SPI_CR1_CRCEN
+
+
+/** @defgroup SPI_Slave_Select_management SPI Slave Select management
+  * @{
+  */
+#define SPI_NSS_SOFT                    SPI_CR1_SSM
+#define SPI_NSS_HARD_INPUT              ((uint32_t)0x00000000)
+#define SPI_NSS_HARD_OUTPUT             ((uint32_t)(SPI_CR2_SSOE << 16))
+
+
+/** @defgroup SPI_mode SPI mode
+  * @{
+  */
+#define SPI_MODE_SLAVE                  ((uint32_t)0x00000000)
+#define SPI_MODE_MASTER                 (SPI_CR1_MSTR | SPI_CR1_SSI)
+
+
+
+
 /** 
   * @brief  DMA handle Structure definition  
   */ 

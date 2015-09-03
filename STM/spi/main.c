@@ -45,9 +45,30 @@ SystemClock_Config();
 	
 /* Configure LED2 */
 BSP_LED_Init(LED2);
-/* After removing all the errors.... change the led pin to PA0 */
+/* After removing all the errors.... change the led pin to PA5 */
 
+  /*##-1- Configure the SPI peripheral #######################################*/
+  /* Set the SPI parameters */
+  SpiHandle.Instance               = SPIx;
+  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+  SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
+  SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
+  SpiHandle.Init.CLKPolarity       = SPI_POLARITY_LOW;
+  SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
+  SpiHandle.Init.FirstBit          = SPI_FIRSTBIT_MSB;
+  SpiHandle.Init.TIMode            = SPI_TIMODE_DISABLE;
+  SpiHandle.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
+  SpiHandle.Init.CRCPolynomial     = 7;
+  SpiHandle.Init.NSS               = SPI_NSS_SOFT;
 	
+
+#ifdef MASTER_BOARD
+  SpiHandle.Init.Mode = SPI_MODE_MASTER;
+#else
+  SpiHandle.Init.Mode = SPI_MODE_SLAVE;
+#endif /* MASTER_BOARD */
+	
+
 SER_Init();
 
 RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;

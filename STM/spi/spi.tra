@@ -14,7 +14,7 @@
 ### ADS-LD Output File: 'spi.axf'
 ### ADS-LD Command File: 'spi.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'spi.lnp', Handle=0x0000025C
+### Creating CmdFile 'spi.lnp', Handle=0x0000001C
 ### Writing '.lnp' file
 ### ADS-LD Command file 'spi.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
