@@ -67,7 +67,13 @@ BSP_LED_Init(LED2);
 #else
   SpiHandle.Init.Mode = SPI_MODE_SLAVE;
 #endif /* MASTER_BOARD */
-	
+
+if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
+ {
+   /* Initialization Error */
+   Error_Handler();
+ }
+
 
 SER_Init();
 

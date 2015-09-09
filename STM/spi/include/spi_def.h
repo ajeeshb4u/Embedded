@@ -3,6 +3,12 @@
 
 #include "dma_def.h"
 
+#ifndef NULL
+  #define NULL      0
+#endif
+
+
+
 /** 
   * @brief  SPI Configuration Structure definition  
   */
@@ -159,6 +165,25 @@ typedef enum
   HAL_SPI_STATE_ERROR      = 0x03   /*!< SPI error state                                    */
     
 }HAL_SPI_StateTypeDef;
+
+
+
+
+
+/** @defgroup SPI_Error_Codes SPI Error Codes
+  * @{
+  */ 
+#define HAL_SPI_ERROR_NONE      ((uint32_t)0x00)    /*!< No error             */
+#define HAL_SPI_ERROR_MODF      ((uint32_t)0x01)    /*!< MODF error           */
+#define HAL_SPI_ERROR_CRC       ((uint32_t)0x02)    /*!< CRC error            */
+#define HAL_SPI_ERROR_OVR       ((uint32_t)0x04)    /*!< OVR error            */
+#define HAL_SPI_ERROR_DMA       ((uint32_t)0x08)    /*!< DMA transfer error   */
+#define HAL_SPI_ERROR_FLAG      ((uint32_t)0x10)    /*!< Flag: RXNE,TXE, BSY  */
+/**
+  * @}
+  */
+
+
 
 
 

@@ -9,8 +9,37 @@
 #include "nvic_def.h"
 #include "stm32f1xx_hal_rcc.c"
 
+
 __weak void HAL_MspInit(void);
-	
+/*
+#ifndef SPIx
+#define SPIx                             SPI2
+#endif
+*/	
+
+
+#define SPIx_SCK_GPIO_PORT              GPIOB
+#define SPIx_SCK_PIN                    GPIO_PIN_13
+#define SPIx_MISO_GPIO_PORT             GPIOB
+#define SPIx_MISO_PIN                   GPIO_PIN_14
+#define SPIx_MOSI_GPIO_PORT             GPIOB
+#define SPIx_MOSI_PIN                   GPIO_PIN_15
+
+/* Definition for SPIx clock resources */
+#define SPIx                             SPI2
+#define SPIx_CLK_ENABLE()                __HAL_RCC_SPI2_CLK_ENABLE() 	/*enable SPIx Clock */
+#define SPIx_SCK_GPIO_CLK_ENABLE()       __HAL_RCC_GPIOB_CLK_ENABLE()
+#define SPIx_MISO_GPIO_CLK_ENABLE()      __HAL_RCC_GPIOB_CLK_ENABLE()
+#define SPIx_MOSI_GPIO_CLK_ENABLE()      __HAL_RCC_GPIOB_CLK_ENABLE()
+
+/* Size of buffer */
+#define BUFFERSIZE                       (COUNTOF(aTxBuffer) - 1)
+
+/* Exported macro ------------------------------------------------------------*/
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
+
+#define __HAL_SPI_DISABLE(__HANDLE__) CLEAR_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_SPE)
+
 #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
 
 #define CLEAR_BIT(REG, BIT)   ((REG) &= ~(BIT))
@@ -44,7 +73,7 @@ __weak void HAL_MspInit(void);
 /** 
   * @brief  SPI handle Structure definition
   */
-
+#ifndef SPI_HandleTypeDef
 typedef struct __SPI_HandleTypeDef
 {
   SPI_TypeDef                *Instance;    /*!< SPI registers base address */
@@ -78,7 +107,7 @@ typedef struct __SPI_HandleTypeDef
   __IO uint32_t  ErrorCode;    /*!< SPI Error code */
 
 }SPI_HandleTypeDef;
-
+#endif
 
 /**
   * @brief This function configures the source of the time base. 
@@ -158,6 +187,92 @@ __weak void HAL_MspInit(void)
   /* NOTE : This function Should not be modified, when the callback is needed,
             the HAL_MspInit could be implemented in the user file
    */
+}
+
+
+/**
+  * @brief SPI MSP Initialization 
+  *        This function configures the hardware resources used in this example: 
+  *           - Peripheral's clock enable
+  *           - Peripheral's GPIO Configuration  
+  * @param hspi: SPI handle pointer
+  * @retval None
+  */
+void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
+{
+GPIO_InitTypeDef  GPIO_InitStruct;
+
+  if(hspi->Instance == SPIx)
+  {     
+    /*##-1- Enable peripherals and GPIO Clocks #################################*/
+    /* Enable GPIO TX/RX clock */
+    SPIx_SCK_GPIO_CLK_ENABLE();
+    SPIx_MISO_GPIO_CLK_ENABLE();
+    SPIx_MOSI_GPIO_CLK_ENABLE();
+    /* Enable SPI clock */
+    SPIx_CLK_ENABLE(); 
+    
+    /*##-2- Configure peripheral GPIO ##########################################*/  
+    /* SPI SCK GPIO pin configuration  */
+    GPIO_InitStruct.Pin       = SPIx_SCK_PIN;
+    GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull      = GPIO_PULLDOWN;
+    GPIO_InitStruct.Speed     = GPIO_SPEED_LOW;
+    HAL_GPIO_Init(SPIx_SCK_GPIO_PORT, &GPIO_InitStruct);
+
+    /* SPI MISO GPIO pin configuration  */
+    GPIO_InitStruct.Pin = SPIx_MISO_PIN;
+    HAL_GPIO_Init(SPIx_MISO_GPIO_PORT, &GPIO_InitStruct);
+
+    /* SPI MOSI GPIO pin configuration  */
+    GPIO_InitStruct.Pin = SPIx_MOSI_PIN;
+    HAL_GPIO_Init(SPIx_MOSI_GPIO_PORT, &GPIO_InitStruct);
+  }
+}
+
+
+HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
+{
+  /* Check the SPI handle allocation */
+  if(hspi == NULL)
+  {
+    return HAL_ERROR;
+  }
+
+  if(hspi->State == HAL_SPI_STATE_RESET)
+  {
+    /* Init the low level hardware : GPIO, CLOCK, NVIC... */
+    HAL_SPI_MspInit(hspi);
+  }
+  
+  hspi->State = HAL_SPI_STATE_BUSY;
+
+  /* Disble the selected SPI peripheral */
+  __HAL_SPI_DISABLE(hspi);
+
+  /*----------------------- SPIx CR1 & CR2 Configuration ---------------------*/
+  /* Configure : SPI Mode, Communication Mode, Data size, Clock polarity and phase, NSS management,
+  Communication speed, First bit and CRC calculation state */
+  WRITE_REG(hspi->Instance->CR1, (hspi->Init.Mode | hspi->Init.Direction | hspi->Init.DataSize |
+                                  hspi->Init.CLKPolarity | hspi->Init.CLKPhase | (hspi->Init.NSS & SPI_CR1_SSM) |
+                                  hspi->Init.BaudRatePrescaler | hspi->Init.FirstBit  | hspi->Init.CRCCalculation) );
+
+  /* Configure : NSS management */
+  WRITE_REG(hspi->Instance->CR2, (((hspi->Init.NSS >> 16) & SPI_CR2_SSOE) | hspi->Init.TIMode));
+
+  /*---------------------------- SPIx CRCPOLY Configuration ------------------*/
+  /* Configure : CRC Polynomial */
+  WRITE_REG(hspi->Instance->CRCPR, hspi->Init.CRCPolynomial);
+
+#if defined (STM32F101x6) || defined (STM32F101xB) || defined (STM32F101xE) || defined (STM32F101xG) || defined (STM32F102x6) || defined (STM32F102xB) || defined (STM32F103x6) || defined (STM32F103xB) || defined (STM32F103xE) || defined (STM32F103xG) || defined (STM32F105xC) || defined (STM32F107xC)
+  /* Activate the SPI mode (Make sure that I2SMOD bit in I2SCFGR register is reset) */
+  CLEAR_BIT(hspi->Instance->I2SCFGR, SPI_I2SCFGR_I2SMOD);
+#endif
+
+  hspi->ErrorCode = HAL_SPI_ERROR_NONE;
+  hspi->State = HAL_SPI_STATE_READY;
+  
+  return HAL_OK;
 }
 
 
