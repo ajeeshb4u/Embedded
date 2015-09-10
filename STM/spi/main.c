@@ -8,6 +8,9 @@
 /**********************************	USART DATA	******************************************/
 char g[20]={0x55,0xaa,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,0x11,0x12};
 
+/* Uncomment this line to use the board as master, if not it is used as slave */
+#define MASTER_BOARD	
+	
 /* SPI handler declaration */
 SPI_HandleTypeDef SpiHandle; 				/*defined a struct type SPI_HandleTypeDef */
 	
@@ -74,6 +77,59 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
    Error_Handler();
  }
 
+
+ #ifdef MASTER_BOARD
+  /* SPI block is enabled prior calling SPI transmit/receive functions, in order to get CLK signal properly pulled down.
+     Otherwise, SPI CLK signal is not clean on this board and leads to errors during transfer */
+  __HAL_SPI_ENABLE(&SpiHandle);
+
+  /* Configure User push-button */
+  BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
+  /* Wait for User push-button press before starting the Communication */
+  while (BSP_PB_GetState(BUTTON_USER) != GPIO_PIN_RESET)
+  {
+    BSP_LED_Toggle(LED2);
+    HAL_Delay(100);
+  }
+  BSP_LED_Off(LED2);
+#endif /* MASTER_BOARD */
+
+
+	
+  /*##-2- Start the Full Duplex Communication process ########################*/  
+  /* While the SPI in TransmitReceive process, user can transmit data through 
+     "aTxBuffer" buffer & receive data through "aRxBuffer" */
+  /* Timeout is set to 5S */
+  
+  switch(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE, 5000))
+  {
+//    case HAL_OK:
+//      /* Communication is completed ___________________________________________ */
+      /* Compare the sent and received buffers */
+//      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
+//      {
+        /* Transfer error in transmission process */
+//        Error_Handler();
+//      }
+      /* Turn LED2 on: Transfer in transmission/Reception process is correct */
+//      BSP_LED_On(LED2);
+//      break;
+
+//    case HAL_TIMEOUT:
+      /* An Error Occur ______________________________________________________ */
+//    case HAL_ERROR:
+      /* Call Timeout Handler */
+//      Error_Handler();
+//      break;
+//    default:
+//      break;
+  }
+
+
+
+	
+
+ 
 
 SER_Init();
 

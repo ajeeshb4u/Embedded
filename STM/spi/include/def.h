@@ -7,9 +7,11 @@
 #include "flash_def.h"
 #include "nvic_def.h"
 #include "stm32f1xx_hal_rcc.h"
+#include "spi_def.h"
 
 #define LED_BLUE_GPIO										GPIOC
 #define LED_BLUE_PIN	 									13
+
 
 /**
   * @brief This is the HAL system configuration section
@@ -29,7 +31,9 @@
 #define GPIO_CNF_AFIO_PUSHPULL		2
 #define GPIO_CNF_AFIO_OPENDRAIN		3
 
-#define GPIO_MODE_INPUT				0
+#define  GPIO_MODE_INPUT                        ((uint32_t)0x00000000)   /*!< Input Floating Mode                   */
+
+
 #define GPIO_MODE_OUTPUT10MHz		1
 #define GPIO_MODE_OUTPUT2MHz		2
 #define GPIO_MODE_OUTPUT50MHz		3
@@ -39,6 +43,100 @@
 #define GPIOPINCONFH(pin, conf) (conf << ((pin - 8) * 4))
 #define CONFMASKL(pin) ((u32)~(15 << (pin * 4)))
 #define CONFMASKH(pin) ((u32)~(15 << ((pin - 8) * 4)))
+
+
+/** @defgroup SPI_Interrupt_configuration_definition SPI Interrupt configuration definition
+  * @{
+  */
+#define SPI_IT_TXE                      SPI_CR2_TXEIE
+#define SPI_IT_RXNE                     SPI_CR2_RXNEIE
+#define SPI_IT_ERR                      SPI_CR2_ERRIE
+
+
+/** @defgroup SPI_Flag_definition SPI Flag definition
+  * @{
+  */
+#define SPI_FLAG_RXNE                   SPI_SR_RXNE
+#define SPI_FLAG_TXE                    SPI_SR_TXE
+#define SPI_FLAG_CRCERR                 SPI_SR_CRCERR
+#define SPI_FLAG_MODF                   SPI_SR_MODF
+#define SPI_FLAG_OVR                    SPI_SR_OVR
+#define SPI_FLAG_BSY                    SPI_SR_BSY
+
+/** @brief  Resets the CRC calculation of the SPI.
+  * @param  __HANDLE__: specifies the SPI Handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral.
+  * @retval None
+  */
+#define SPI_RESET_CRC(__HANDLE__) do{CLEAR_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_CRCEN);\
+                                     SET_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_CRCEN);}while(0)
+
+
+  #define __HAL_LOCK(__HANDLE__)                                           \
+                                do{                                        \
+                                    if((__HANDLE__)->Lock == HAL_LOCKED)  \
+                                    {                                      \
+                                       return HAL_BUSY;                    \
+                                    }                                      \
+                                    else                                   \
+                                    {                                      \
+                                       (__HANDLE__)->Lock = HAL_LOCKED;    \
+                                    }                                      \
+                                  }while (0)
+
+  #define __HAL_UNLOCK(__HANDLE__)                                          \
+                                  do{                                       \
+                                      (__HANDLE__)->Lock = HAL_UNLOCKED;   \
+                                    }while (0)
+
+																		
+/** @brief  Disables the SPI.
+  * @param  __HANDLE__: specifies the SPI Handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral.
+  * @retval None
+  */                                           
+#define __HAL_SPI_DISABLE(__HANDLE__) CLEAR_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_SPE)
+
+
+/** @brief  Enable the specified SPI interrupts.
+  * @param  __HANDLE__: specifies the SPI handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral.
+  * @param  __INTERRUPT__: specifies the interrupt source to enable.
+  *         This parameter can be one of the following values:
+  *            @arg SPI_IT_TXE: Tx buffer empty interrupt enable
+  *            @arg SPI_IT_RXNE: RX buffer not empty interrupt enable
+  *            @arg SPI_IT_ERR: Error interrupt enable
+  * @retval None
+  */
+#define __HAL_SPI_ENABLE_IT(__HANDLE__, __INTERRUPT__)   SET_BIT((__HANDLE__)->Instance->CR2, (__INTERRUPT__))
+
+/** @brief  Disable the specified SPI interrupts.
+  * @param  __HANDLE__: specifies the SPI handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral.
+  * @param  __INTERRUPT__: specifies the interrupt source to disable.
+  *         This parameter can be one of the following values:
+  *            @arg SPI_IT_TXE: Tx buffer empty interrupt enable
+  *            @arg SPI_IT_RXNE: RX buffer not empty interrupt enable
+  *            @arg SPI_IT_ERR: Error interrupt enable
+  * @retval None
+  */
+#define __HAL_SPI_DISABLE_IT(__HANDLE__, __INTERRUPT__)  CLEAR_BIT((__HANDLE__)->Instance->CR2, (__INTERRUPT__))
+																		
+																		
+																		
+																		
+
+#define HAL_MAX_DELAY      0xFFFFFFFF
+
+#define HAL_IS_BIT_SET(REG, BIT)         (((REG) & (BIT)) != RESET)
+#define HAL_IS_BIT_CLR(REG, BIT)         (((REG) & (BIT)) == RESET)
+
+#define __HAL_LINKDMA(__HANDLE__, __PPP_DMA_FIELD_, __DMA_HANDLE_)           \
+                        do{                                                  \
+                              (__HANDLE__)->__PPP_DMA_FIELD_ = &(__DMA_HANDLE_); \
+                              (__DMA_HANDLE_).Parent = (__HANDLE__);             \
+                          } while(0)
+
 
 
 typedef enum 
@@ -497,6 +595,165 @@ void BSP_LED_Init(Led_TypeDef Led)
   /* Reset PIN to switch off the LED */
   HAL_GPIO_WritePin(GPIO_PORT[Led],GPIO_PIN[Led], GPIO_PIN_RESET);
 }
+
+/** 
+  * @brief  SPI handle Structure definition
+  */
+#ifndef SPI_HandleTypeDef
+typedef struct __SPI_HandleTypeDef
+{
+  SPI_TypeDef                *Instance;    /*!< SPI registers base address */
+
+  SPI_InitTypeDef            Init;         /*!< SPI communication parameters */
+
+  uint8_t                    *pTxBuffPtr;  /*!< Pointer to SPI Tx transfer Buffer */
+
+  uint16_t                   TxXferSize;   /*!< SPI Tx transfer size */
+  
+  uint16_t                   TxXferCount;  /*!< SPI Tx Transfer Counter */
+
+  uint8_t                    *pRxBuffPtr;  /*!< Pointer to SPI Rx transfer Buffer */
+
+  uint16_t                   RxXferSize;   /*!< SPI Rx transfer size */
+
+  uint16_t                   RxXferCount;  /*!< SPI Rx Transfer Counter */
+
+  DMA_HandleTypeDef          *hdmatx;      /*!< SPI Tx DMA handle parameters */
+
+  DMA_HandleTypeDef          *hdmarx;      /*!< SPI Rx DMA handle parameters */
+
+  void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
+
+  void                       (*TxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Tx ISR */
+
+  HAL_LockTypeDef            Lock;         /*!< SPI locking object */
+
+  __IO HAL_SPI_StateTypeDef  State;        /*!< SPI communication state */
+
+  __IO uint32_t  ErrorCode;    /*!< SPI Error code */
+
+}SPI_HandleTypeDef;
+#endif
+
+
+/** @brief  Check whether the specified SPI flag is set or not.
+  * @param  __HANDLE__: specifies the SPI handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral.
+  * @param  __FLAG__: specifies the flag to check.
+  *         This parameter can be one of the following values:
+  *            @arg SPI_FLAG_RXNE: Receive buffer not empty flag
+  *            @arg SPI_FLAG_TXE: Transmit buffer empty flag
+  *            @arg SPI_FLAG_CRCERR: CRC error flag
+  *            @arg SPI_FLAG_MODF: Mode fault flag
+  *            @arg SPI_FLAG_OVR: Overrun flag
+  *            @arg SPI_FLAG_BSY: Busy flag
+  * @retval The new state of __FLAG__ (TRUE or FALSE).
+  */
+#define __HAL_SPI_GET_FLAG(__HANDLE__, __FLAG__) ((((__HANDLE__)->Instance->SR) & (__FLAG__)) == (__FLAG__))
+
+/** @brief  Clear the SPI CRCERR pending flag.
+  * @param  __HANDLE__: specifies the SPI handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral.
+  * @retval None
+  */
+#define __HAL_SPI_CLEAR_CRCERRFLAG(__HANDLE__) ((__HANDLE__)->Instance->SR = ~(SPI_FLAG_CRCERR))
+
+/** @brief  Clear the SPI MODF pending flag.
+  * @param  __HANDLE__: specifies the SPI handle.
+  *         This parameter can be SPI where x: 1, 2, or 3 to select the SPI peripheral. 
+  * @retval None
+  */
+
+
+
+/**
+  * @brief  This function handles SPI Communication Timeout.
+  * @param  hspi: pointer to a SPI_HandleTypeDef structure that contains
+  *                the configuration information for SPI module.
+  * @param  Flag: SPI flag to check
+  * @param  Status: Flag status to check: RESET or set
+  * @param  Timeout: Timeout duration
+  * @retval HAL status
+  */
+static HAL_StatusTypeDef SPI_WaitOnFlagUntilTimeout(SPI_HandleTypeDef *hspi, uint32_t Flag, FlagStatus Status, uint32_t Timeout)  
+{
+  uint32_t tickstart = 0;
+
+  /* Get tick */ 
+  tickstart = HAL_GetTick();
+
+  /* Wait until flag is set */
+  if(Status == RESET)
+  {
+    while(__HAL_SPI_GET_FLAG(hspi, Flag) == RESET)
+    {
+      if(Timeout != HAL_MAX_DELAY)
+      {
+        if((Timeout == 0) || ((HAL_GetTick() - tickstart ) > Timeout))
+        {
+          /* Disable the SPI and reset the CRC: the CRC value should be cleared
+             on both master and slave sides in order to resynchronize the master
+             and slave for their respective CRC calculation */
+
+          /* Disable TXE, RXNE and ERR interrupts for the interrupt process */
+          __HAL_SPI_DISABLE_IT(hspi, (SPI_IT_TXE | SPI_IT_RXNE | SPI_IT_ERR));
+
+          /* Disable SPI peripheral */
+          __HAL_SPI_DISABLE(hspi);
+
+          /* Reset CRC Calculation */
+          if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE)
+          {
+            SPI_RESET_CRC(hspi);
+          }
+
+          hspi->State= HAL_SPI_STATE_READY;
+
+          /* Process Unlocked */
+          __HAL_UNLOCK(hspi);
+
+          return HAL_TIMEOUT;
+        }
+      }
+    }
+  }
+  else
+  {
+    while(__HAL_SPI_GET_FLAG(hspi, Flag) != RESET)
+    {
+      if(Timeout != HAL_MAX_DELAY)
+      {
+        if((Timeout == 0) || ((HAL_GetTick() - tickstart ) > Timeout))
+        {
+          /* Disable the SPI and reset the CRC: the CRC value should be cleared
+             on both master and slave sides in order to resynchronize the master
+             and slave for their respective CRC calculation */
+
+          /* Disable TXE, RXNE and ERR interrupts for the interrupt process */
+          __HAL_SPI_DISABLE_IT(hspi, (SPI_IT_TXE | SPI_IT_RXNE | SPI_IT_ERR));
+
+          /* Disable SPI peripheral */
+          __HAL_SPI_DISABLE(hspi);
+
+          /* Reset CRC Calculation */
+          if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE)
+          {
+            SPI_RESET_CRC(hspi);
+          }
+
+          hspi->State= HAL_SPI_STATE_READY;
+
+          /* Process Unlocked */
+          __HAL_UNLOCK(hspi);
+
+          return HAL_TIMEOUT;
+        }
+      }
+    }
+  }
+  return HAL_OK;
+}
+
 
 
 
