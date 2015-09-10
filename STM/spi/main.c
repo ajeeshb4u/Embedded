@@ -103,34 +103,29 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
   
   switch(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE, 5000))
   {
-//    case HAL_OK:
-//      /* Communication is completed ___________________________________________ */
+    case HAL_OK:
+      /* Communication is completed ___________________________________________ */
       /* Compare the sent and received buffers */
-//      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
-//      {
+      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
+      {
         /* Transfer error in transmission process */
-//        Error_Handler();
-//      }
+        Error_Handler();
+      }
       /* Turn LED2 on: Transfer in transmission/Reception process is correct */
-//      BSP_LED_On(LED2);
-//      break;
+      BSP_LED_On(LED2);
+      break;
 
-//    case HAL_TIMEOUT:
+    case HAL_TIMEOUT:
       /* An Error Occur ______________________________________________________ */
-//    case HAL_ERROR:
+    case HAL_ERROR:
       /* Call Timeout Handler */
-//      Error_Handler();
-//      break;
-//    default:
-//      break;
+      Error_Handler();
+      break;
+    default:
+      break;
   }
 
-
-
 	
-
- 
-
 SER_Init();
 
 RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;

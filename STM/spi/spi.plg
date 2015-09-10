@@ -11,451 +11,6 @@ Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
 include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(429): warning:  #223-D: function "assert_param" declared implicitly
-include/macros.h(429): warning:  #223-D: function "IS_SPI_DIRECTION_2LINES" declared implicitly
-include/macros.h(432): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(458): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(486): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(486): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(500): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(500): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(516): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(529): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(529): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(557): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(557): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(570): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(570): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(585): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(596): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(596): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(611): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(611): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(622): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(622): error:  #20: identifier "SPI_FLAG_BSY" is undefined
-include/macros.h(631): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(631): error:  #20: identifier "SPI_FLAG_CRCERR" is undefined
-include/macros.h(635): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(638): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(644): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(432): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(458): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(486): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(500): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(529): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(557): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(570): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(596): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(611): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(622): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(631): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(635): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(638): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(644): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol SPI_RESET_CRC (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol SPI_WaitOnFlagUntilTimeout (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_GET_FLAG (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(101): error:  #169: expected a declaration
-include/macros.h(130): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(132): warning:  #231-D: declaration is not visible outside of function
-include/macros.h(140): error:  #169: expected a declaration
-include/macros.h(232): error:  #20: identifier "SPI_HandleTypeDef" is undefined
-include/macros.h(236): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(265): error:  #20: identifier "SPI_HandleTypeDef" is undefined
-include/macros.h(273): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(279): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(282): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(287): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(292): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(292): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(292): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(296): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(296): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(303): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(304): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(428): error:  #20: identifier "SPI_HandleTypeDef" is undefined
-include/macros.h(432): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(432): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(443): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(446): error:  #132: expression must have pointer-to-struct-or-union type
-include/macros.h(448): error:  #132: expression must have pointer-to-struct-or-union type
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(429): warning:  #223-D: function "assert_param" declared implicitly
-include/macros.h(429): warning:  #223-D: function "IS_SPI_DIRECTION_2LINES" declared implicitly
-include/macros.h(432): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(458): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(486): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(500): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(529): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(557): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(570): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(596): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(611): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(622): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(631): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(635): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(638): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(644): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol IS_SPI_DIRECTION_2LINES (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol SPI_RESET_CRC (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol SPI_WaitOnFlagUntilTimeout (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_GET_FLAG (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol assert_param (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(442): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(496): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(510): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(539): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(567): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(580): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(606): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(621): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(632): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(641): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(648): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(654): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol SPI_WaitOnFlagUntilTimeout (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_GET_FLAG (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(527): error:  #20: identifier "SPI_HandleTypeDef" is undefined
-include/def.h(537): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/def.h(539): error:  #20: identifier "HAL_MAX_DELAY" is undefined
-include/def.h(548): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(548): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(548): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(548): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(551): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(554): error:  #132: expression must have pointer-to-struct-or-union type
-include/def.h(554): error:  #20: identifier "SPI_CRCCALCULATION_ENABLE" is undefined
-include/def.h(556): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(559): error:  #132: expression must have pointer-to-struct-or-union type
-include/def.h(559): error:  #20: identifier "HAL_SPI_STATE_READY" is undefined
-include/def.h(562): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(571): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/def.h(573): error:  #20: identifier "HAL_MAX_DELAY" is undefined
-include/def.h(582): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(582): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(582): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(582): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(585): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(588): error:  #132: expression must have pointer-to-struct-or-union type
-include/def.h(588): error:  #20: identifier "SPI_CRCCALCULATION_ENABLE" is undefined
-include/def.h(590): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(593): error:  #132: expression must have pointer-to-struct-or-union type
-include/def.h(593): error:  #20: identifier "HAL_SPI_STATE_READY" is undefined
-include/def.h(596): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(442): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(641): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(648): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(654): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(524): error:  #20: identifier "SPI_InitTypeDef" is undefined
-include/def.h(538): error:  #20: identifier "DMA_HandleTypeDef" is undefined
-include/def.h(540): error:  #20: identifier "DMA_HandleTypeDef" is undefined
-include/def.h(546): error:  #20: identifier "HAL_LockTypeDef" is undefined
-include/def.h(548): error:  #20: identifier "HAL_SPI_StateTypeDef" is undefined
-error type>(575): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/def.h(577): error:  #20: identifier "HAL_MAX_DELAY" is undefined
-include/def.h(586): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(586): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(586): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(586): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(589): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(592): error:  #20: identifier "SPI_CRCCALCULATION_ENABLE" is undefined
-include/def.h(594): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(597): error:  #20: identifier "HAL_SPI_STATE_READY" is undefined
-include/def.h(600): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(609): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/def.h(611): error:  #20: identifier "HAL_MAX_DELAY" is undefined
-include/def.h(620): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(620): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(620): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(620): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(623): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(626): error:  #20: identifier "SPI_CRCCALCULATION_ENABLE" is undefined
-include/def.h(628): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(631): error:  #20: identifier "HAL_SPI_STATE_READY" is undefined
-include/def.h(634): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(404): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(603): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(610): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(616): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(576): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/def.h(578): error:  #20: identifier "HAL_MAX_DELAY" is undefined
-include/def.h(587): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(587): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(587): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(587): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(590): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(595): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(601): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(610): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/def.h(612): error:  #20: identifier "HAL_MAX_DELAY" is undefined
-include/def.h(621): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(621): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(621): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(621): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(624): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(629): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(635): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(404): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(603): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(610): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(616): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(628): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(628): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(628): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(628): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(631): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(636): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(642): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(662): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(662): error:  #20: identifier "SPI_IT_TXE" is undefined
-include/def.h(662): error:  #20: identifier "SPI_IT_RXNE" is undefined
-include/def.h(662): error:  #20: identifier "SPI_IT_ERR" is undefined
-include/def.h(665): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(670): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(676): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(404): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(610): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(616): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(637): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(640): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(645): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(651): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(671): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(674): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(679): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(685): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(404): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(610): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(616): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol SPI_RESET_CRC (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE_IT (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(637): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(640): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(645): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(651): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(671): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(674): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(679): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(685): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(414): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(620): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(626): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol SPI_RESET_CRC (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE_IT (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(637): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(640): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(645): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(651): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(671): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(674): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(679): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/def.h(685): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(407): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(613): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(619): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol SPI_RESET_CRC (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE_IT (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(647): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(650): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(661): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/def.h(681): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(684): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(695): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(400): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(606): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(612): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol __HAL_LOCK (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE_IT (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_UNLOCK (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(664): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(667): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/def.h(698): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(701): warning:  #223-D: function "__HAL_SPI_DISABLE" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE (referred from main.o).
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE_IT (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(672): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/def.h(706): warning:  #223-D: function "__HAL_SPI_DISABLE_IT" declared implicitly
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-spi.axf: Error: L6218E: Undefined symbol __HAL_SPI_DISABLE_IT (referred from main.o).
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
 main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
 main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
 main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
@@ -464,3 +19,220 @@ compiling serial.c...
 linking...
 Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
 "spi.axf" - 0 Error(s), 4 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4678 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(115): warning:  #223-D: function "BSP_LED_On" declared implicitly
+main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol BSP_LED_On (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4710 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4710 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(129): warning:  #1295-D: Deprecated declaration SER_Init - give arg types
+main.c(129): warning:  #77-D: this declaration has no storage class or type specifier
+main.c(129): error:  #147: declaration is incompatible with "void SER_Init(void)" (declared at line 19 of "include/Serial.h")
+main.c(131): error:  #18: expected a ")"
+main.c(131): error:  #79: expected a type specifier
+main.c(131): error:  #101: "RCC_TypeDef" has already been declared in the current scope
+main.c(131): error:  #141-D: unnamed prototyped parameters not allowed when body is present
+main.c(131): error:  #130: expected a "{"
+main.c(148): warning:  #12-D: parsing restarts here after previous syntax error
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(245): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(129): warning:  #1295-D: Deprecated declaration SER_Init - give arg types
+main.c(129): warning:  #77-D: this declaration has no storage class or type specifier
+main.c(129): error:  #147: declaration is incompatible with "void SER_Init(void)" (declared at line 19 of "include/Serial.h")
+main.c(131): error:  #18: expected a ")"
+main.c(131): error:  #79: expected a type specifier
+main.c(131): error:  #101: "RCC_TypeDef" has already been declared in the current scope
+main.c(131): error:  #141-D: unnamed prototyped parameters not allowed when body is present
+main.c(131): error:  #130: expected a "{"
+main.c(148): warning:  #12-D: parsing restarts here after previous syntax error
+main.c(150): error:  #169: expected a declaration
+main.c(226): warning:  #12-D: parsing restarts here after previous syntax error
+main.c(227): error:  #77-D: this declaration has no storage class or type specifier
+main.c(227): error:  #65: expected a ";"
+main.c(228): error:  #77-D: this declaration has no storage class or type specifier
+main.c(228): error:  #65: expected a ";"
+main.c(229): error:  #77-D: this declaration has no storage class or type specifier
+main.c(229): error:  #65: expected a ";"
+main.c(230): error:  #77-D: this declaration has no storage class or type specifier
+main.c(230): error:  #65: expected a ";"
+main.c(236): error:  #169: expected a declaration
+main.c(262): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
+main.c(25): error:  #114: function "Error_Handler" was referenced but not defined
+main.c(26): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(129): warning:  #1295-D: Deprecated declaration SER_Init - give arg types
+main.c(129): warning:  #77-D: this declaration has no storage class or type specifier
+main.c(129): error:  #147: declaration is incompatible with "void SER_Init(void)" (declared at line 19 of "include/Serial.h")
+main.c(131): error:  #18: expected a ")"
+main.c(131): error:  #79: expected a type specifier
+main.c(131): error:  #101: "RCC_TypeDef" has already been declared in the current scope
+main.c(131): error:  #141-D: unnamed prototyped parameters not allowed when body is present
+main.c(131): error:  #130: expected a "{"
+main.c(148): warning:  #12-D: parsing restarts here after previous syntax error
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(245): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Build target 'Target 1'
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
+main.c(200): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(201): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
