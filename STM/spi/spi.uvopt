@@ -232,15 +232,21 @@
       <tvExp>1</tvExp>
       <Focus>0</Focus>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>77</TopLine>
       <CurrentLine>78</CurrentLine>
 =======
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
       <ColumnNumber>15</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>58</TopLine>
       <CurrentLine>71</CurrentLine>
+<<<<<<< HEAD
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>

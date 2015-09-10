@@ -85,6 +85,7 @@ typedef struct __SPI_HandleTypeDef
   uint16_t                   TxXferSize;   /*!< SPI Tx transfer size */
   
   uint16_t                   TxXferCount;  /*!< SPI Tx Transfer Counter */
+<<<<<<< HEAD
 
   uint8_t                    *pRxBuffPtr;  /*!< Pointer to SPI Rx transfer Buffer */
 
@@ -98,6 +99,21 @@ typedef struct __SPI_HandleTypeDef
 
   void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
 
+=======
+
+  uint8_t                    *pRxBuffPtr;  /*!< Pointer to SPI Rx transfer Buffer */
+
+  uint16_t                   RxXferSize;   /*!< SPI Rx transfer size */
+
+  uint16_t                   RxXferCount;  /*!< SPI Rx Transfer Counter */
+
+  DMA_HandleTypeDef          *hdmatx;      /*!< SPI Tx DMA handle parameters */
+
+  DMA_HandleTypeDef          *hdmarx;      /*!< SPI Rx DMA handle parameters */
+
+  void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
+
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
   void                       (*TxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Tx ISR */
 
   HAL_LockTypeDef            Lock;         /*!< SPI locking object */
@@ -277,6 +293,7 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
 
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 typedef enum 
 {  
@@ -647,6 +664,8 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
 
 
 
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 #endif

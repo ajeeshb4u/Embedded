@@ -15,7 +15,11 @@
 ### ADS-LD Command File: 'spi.lnp'
 ### Checking for dirty Components...
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Creating CmdFile 'spi.lnp', Handle=0x00000370
+=======
+### Creating CmdFile 'spi.lnp', Handle=0x0000001C
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 ### Creating CmdFile 'spi.lnp', Handle=0x0000001C
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
