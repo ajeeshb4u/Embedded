@@ -17,9 +17,12 @@ Section Cross References
     startup_stm32f10x_md.o(.text) refers to startup_stm32f10x_md.o(STACK) for Stack_Mem
     main.o(.text) refers to main.o(.constdata) for GPIO_PIN
     main.o(.text) refers to main.o(.data) for GPIO_PORT
-    main.o(.text) refers to system_stm32f10x.o(.data) for SystemCoreClock
     main.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
     main.o(.text) refers to serial.o(.text) for SER_Init
+<<<<<<< HEAD
+=======
+    main.o(.text) refers to system_stm32f10x.o(.data) for SystemCoreClock
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
     main.o(.text) refers to main.o(.bss) for SpiHandle
     system_stm32f10x.o(.text) refers to system_stm32f10x.o(.data) for SystemCoreClock
     __main.o(!!!main) refers to rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
@@ -141,52 +144,52 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -245,6 +248,7 @@ Image Symbol Table
     .text                                    0x08000188   Section       64  startup_stm32f10x_md.o(.text)
     .text                                    0x080001c8   Section        0  main.o(.text)
     NVIC_SetPriority                         0x080001c9   Thumb Code    32  main.o(.text)
+<<<<<<< HEAD
     SPI_WaitOnFlagUntilTimeout               0x0800069d   Thumb Code   274  main.o(.text)
     Error_Handler                            0x08000de7   Thumb Code    18  main.o(.text)
     Buffercmp                                0x08000df9   Thumb Code    36  main.o(.text)
@@ -271,6 +275,33 @@ Image Symbol Table
     STACK                                    0x200003d8   Section     1024  startup_stm32f10x_md.o(STACK)
     Stack_Mem                                0x200003d8   Data        1024  startup_stm32f10x_md.o(STACK)
     __initial_sp                             0x200007d8   Data           0  startup_stm32f10x_md.o(STACK)
+=======
+    Error_Handler                            0x080008ab   Thumb Code    18  main.o(.text)
+    Buffercmp                                0x080009f9   Thumb Code    36  main.o(.text)
+    .text                                    0x08000a68   Section        0  system_stm32f10x.o(.text)
+    SetSysClockTo72                          0x08000a69   Thumb Code   192  system_stm32f10x.o(.text)
+    SetSysClock                              0x08000b29   Thumb Code     8  system_stm32f10x.o(.text)
+    .text                                    0x08000c30   Section        0  serial.o(.text)
+    .text                                    0x08000d08   Section       78  rt_memclr_w.o(.text)
+    .text                                    0x08000d56   Section        0  heapauxi.o(.text)
+    .text                                    0x08000d5c   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x08000da6   Section        0  exit.o(.text)
+    .text                                    0x08000db4   Section        8  libspace.o(.text)
+    .text                                    0x08000dbc   Section        0  sys_exit.o(.text)
+    .text                                    0x08000dc8   Section        2  use_no_semi.o(.text)
+    .constdata                               0x08000dca   Section       18  main.o(.constdata)
+    .text                                    0x08000dca   Section        0  indicate_semi.o(.text)
+    .data                                    0x20000000   Section      144  main.o(.data)
+    uwTick                                   0x2000008c   Data           4  main.o(.data)
+    .data                                    0x20000090   Section       20  system_stm32f10x.o(.data)
+    .bss                                     0x200000a4   Section      203  main.o(.bss)
+    .bss                                     0x20000170   Section       96  libspace.o(.bss)
+    HEAP                                     0x200001d0   Section      512  startup_stm32f10x_md.o(HEAP)
+    Heap_Mem                                 0x200001d0   Data         512  startup_stm32f10x_md.o(HEAP)
+    STACK                                    0x200003d0   Section     1024  startup_stm32f10x_md.o(STACK)
+    Stack_Mem                                0x200003d0   Data        1024  startup_stm32f10x_md.o(STACK)
+    __initial_sp                             0x200007d0   Data           0  startup_stm32f10x_md.o(STACK)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 
     Global Symbols
 
@@ -418,6 +449,7 @@ Image Symbol Table
     HAL_GPIO_Init                            0x0800030d   Thumb Code   806  main.o(.text)
     HAL_GPIO_WritePin                        0x08000633   Thumb Code    12  main.o(.text)
     BSP_LED_Init                             0x0800063f   Thumb Code    94  main.o(.text)
+<<<<<<< HEAD
     HAL_RCC_GetSysClockFreq                  0x080007af   Thumb Code   146  main.o(.text)
     HAL_RCC_GetHCLKFreq                      0x08000841   Thumb Code    42  main.o(.text)
     HAL_InitTick                             0x0800086b   Thumb Code    36  main.o(.text)
@@ -462,16 +494,53 @@ Image Symbol Table
     BUTTON_IRQn                              0x08001376   Data           2  main.o(.constdata)
     Region$$Table$$Base                      0x08001378   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x08001398   Number         0  anon$$obj.o(Region$$Table)
+=======
+    HAL_RCC_GetSysClockFreq                  0x0800069d   Thumb Code   146  main.o(.text)
+    HAL_RCC_GetHCLKFreq                      0x0800072f   Thumb Code    42  main.o(.text)
+    HAL_InitTick                             0x08000759   Thumb Code    36  main.o(.text)
+    HAL_MspInit                              0x0800077d   Thumb Code     2  main.o(.text)
+    HAL_Init                                 0x0800077f   Thumb Code    22  main.o(.text)
+    HAL_SPI_MspInit                          0x08000795   Thumb Code   160  main.o(.text)
+    HAL_SPI_Init                             0x08000835   Thumb Code   118  main.o(.text)
+    SystemClock_Config                       0x080008bd   Thumb Code    80  main.o(.text)
+    main                                     0x0800090d   Thumb Code   168  main.o(.text)
+    TIM3_IRQHandler                          0x080009b5   Thumb Code    68  main.o(.text)
+    SystemInit                               0x08000b31   Thumb Code    78  system_stm32f10x.o(.text)
+    SystemCoreClockUpdate                    0x08000b7f   Thumb Code   142  system_stm32f10x.o(.text)
+    SER_Init                                 0x08000c31   Thumb Code   126  serial.o(.text)
+    SER_PutChar                              0x08000caf   Thumb Code    26  serial.o(.text)
+    SER_GetChar                              0x08000cc9   Thumb Code    26  serial.o(.text)
+    SER_CheckChar                            0x08000ce3   Thumb Code    20  serial.o(.text)
+    __aeabi_memclr4                          0x08000d09   Thumb Code     0  rt_memclr_w.o(.text)
+    __aeabi_memclr8                          0x08000d09   Thumb Code     0  rt_memclr_w.o(.text)
+    __rt_memclr_w                            0x08000d09   Thumb Code    78  rt_memclr_w.o(.text)
+    _memset_w                                0x08000d0d   Thumb Code     0  rt_memclr_w.o(.text)
+    __use_two_region_memory                  0x08000d57   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x08000d59   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x08000d5b   Thumb Code     2  heapauxi.o(.text)
+    __user_setup_stackheap                   0x08000d5d   Thumb Code    74  sys_stackheap_outer.o(.text)
+    exit                                     0x08000da7   Thumb Code    12  exit.o(.text)
+    __user_libspace                          0x08000db5   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x08000db5   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x08000db5   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x08000dbd   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x08000dc9   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x08000dc9   Thumb Code     2  use_no_semi.o(.text)
+    GPIO_PIN                                 0x08000dca   Data           2  main.o(.constdata)
+    __semihosting_library_function           0x08000dcb   Thumb Code     0  indicate_semi.o(.text)
+    aAPBAHBPrescTable                        0x08000dcc   Data          16  main.o(.constdata)
+    Region$$Table$$Base                      0x08000ddc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000dfc   Number         0  anon$$obj.o(Region$$Table)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
     GPIO_PORT                                0x20000000   Data           4  main.o(.data)
-    BUTTON_PORT                              0x20000004   Data           4  main.o(.data)
-    g                                        0x20000008   Data          20  main.o(.data)
-    aTxBuffer                                0x2000001c   Data         116  main.o(.data)
-    SystemCoreClock                          0x20000094   Data           4  system_stm32f10x.o(.data)
-    AHBPrescTable                            0x20000098   Data          16  system_stm32f10x.o(.data)
-    SpiHandle                                0x200000a8   Data          88  main.o(.bss)
-    aRxBuffer                                0x20000100   Data         115  main.o(.bss)
-    __libspace_start                         0x20000174   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200001d4   Data           0  libspace.o(.bss)
+    g                                        0x20000004   Data          20  main.o(.data)
+    aTxBuffer                                0x20000018   Data         116  main.o(.data)
+    SystemCoreClock                          0x20000090   Data           4  system_stm32f10x.o(.data)
+    AHBPrescTable                            0x20000094   Data          16  system_stm32f10x.o(.data)
+    SpiHandle                                0x200000a4   Data          88  main.o(.bss)
+    aRxBuffer                                0x200000fc   Data         115  main.o(.bss)
+    __libspace_start                         0x20000170   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200001d0   Data           0  libspace.o(.bss)
 
 
 
@@ -481,9 +550,15 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
+<<<<<<< HEAD
   Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001440, Max: 0x00010000, ABSOLUTE)
 
     Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00001398, Max: 0x00010000, ABSOLUTE)
+=======
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000ea0, Max: 0x00010000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00000dfc, Max: 0x00010000, ABSOLUTE)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -534,6 +609,7 @@ Memory Map of the image
     0x08000180   0x00000006   Code   RO          237    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x08000186   0x00000002   PAD
     0x08000188   0x00000040   Code   RO            4    .text               startup_stm32f10x_md.o
+<<<<<<< HEAD
     0x080001c8   0x00000e38   Code   RO           12    .text               main.o
     0x08001000   0x000001c8   Code   RO           94    .text               system_stm32f10x.o
     0x080011c8   0x000000d8   Code   RO          124    .text               serial.o
@@ -551,17 +627,35 @@ Memory Map of the image
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000007d8, Max: 0x00005000, ABSOLUTE)
+=======
+    0x080001c8   0x000008a0   Code   RO           12    .text               main.o
+    0x08000a68   0x000001c8   Code   RO           94    .text               system_stm32f10x.o
+    0x08000c30   0x000000d8   Code   RO          124    .text               serial.o
+    0x08000d08   0x0000004e   Code   RO          154    .text               c_w.l(rt_memclr_w.o)
+    0x08000d56   0x00000006   Code   RO          156    .text               c_w.l(heapauxi.o)
+    0x08000d5c   0x0000004a   Code   RO          176    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000da6   0x0000000c   Code   RO          178    .text               c_w.l(exit.o)
+    0x08000db2   0x00000002   PAD
+    0x08000db4   0x00000008   Code   RO          186    .text               c_w.l(libspace.o)
+    0x08000dbc   0x0000000c   Code   RO          245    .text               c_w.l(sys_exit.o)
+    0x08000dc8   0x00000002   Code   RO          256    .text               c_w.l(use_no_semi.o)
+    0x08000dca   0x00000000   Code   RO          258    .text               c_w.l(indicate_semi.o)
+    0x08000dca   0x00000012   Data   RO           14    .constdata          main.o
+    0x08000ddc   0x00000020   Data   RO          310    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000007d0, Max: 0x00005000, ABSOLUTE)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000094   Data   RW           15    .data               main.o
-    0x20000094   0x00000014   Data   RW           95    .data               system_stm32f10x.o
-    0x200000a8   0x000000cb   Zero   RW           13    .bss                main.o
-    0x20000173   0x00000001   PAD
-    0x20000174   0x00000060   Zero   RW          187    .bss                c_w.l(libspace.o)
-    0x200001d4   0x00000004   PAD
-    0x200001d8   0x00000200   Zero   RW            2    HEAP                startup_stm32f10x_md.o
-    0x200003d8   0x00000400   Zero   RW            1    STACK               startup_stm32f10x_md.o
+    0x20000000   0x00000090   Data   RW           15    .data               main.o
+    0x20000090   0x00000014   Data   RW           95    .data               system_stm32f10x.o
+    0x200000a4   0x000000cb   Zero   RW           13    .bss                main.o
+    0x2000016f   0x00000001   PAD
+    0x20000170   0x00000060   Zero   RW          187    .bss                c_w.l(libspace.o)
+    0x200001d0   0x00000200   Zero   RW            2    HEAP                startup_stm32f10x_md.o
+    0x200003d0   0x00000400   Zero   RW            1    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -571,13 +665,21 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
+<<<<<<< HEAD
       3640        172         22        148        203     274180   main.o
+=======
+      2208        132         18        144        203     269285   main.o
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
        216         18          0          0          0        877   serial.o
         64         26        236          0       1536        732   startup_stm32f10x_md.o
        456         36          0         20          0       1539   system_stm32f10x.o
 
     ----------------------------------------------------------------------
+<<<<<<< HEAD
       4376        252        290        168       1740     277328   Object Totals
+=======
+      2944        212        286        164       1740     272433   Object Totals
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          1          0   (incl. Padding)
 
@@ -608,8 +710,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       350         16          0          0        100        656   Library Totals
-         6          0          0          0          4          0   (incl. Padding)
+       350         16          0          0         96        656   Library Totals
+         6          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -618,7 +720,7 @@ Image component sizes
        344         16          0          0         96        656   c_w.l
 
     ----------------------------------------------------------------------
-       350         16          0          0        100        656   Library Totals
+       350         16          0          0         96        656   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -627,6 +729,7 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
+<<<<<<< HEAD
       4726        268        290        168       1840     277464   Grand Totals
       4726        268        290        168       1840     277464   ELF Image Totals
       4726        268        290        168          0          0   ROM Totals
@@ -636,6 +739,17 @@ Image component sizes
     Total RO  Size (Code + RO Data)                 5016 (   4.90kB)
     Total RW  Size (RW Data + ZI Data)              2008 (   1.96kB)
     Total ROM Size (Code + RO Data + RW Data)       5184 (   5.06kB)
+=======
+      3294        228        286        164       1836     272569   Grand Totals
+      3294        228        286        164       1836     272569   ELF Image Totals
+      3294        228        286        164          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 3580 (   3.50kB)
+    Total RW  Size (RW Data + ZI Data)              2000 (   1.95kB)
+    Total ROM Size (Code + RO Data + RW Data)       3744 (   3.66kB)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 
 ==============================================================================
 

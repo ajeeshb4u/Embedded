@@ -11,9 +11,9 @@ main.o: include/flash_def.h
 main.o: include/nvic_def.h
 main.o: include/stm32f1xx_hal_rcc.h
 main.o: include/stm32f1xx_hal_rcc_ex.h
-main.o: include/spi_def.h
-main.o: include/dma_def.h
 main.o: include/Serial.h
 main.o: include/main.h
 main.o: include/macros.h
+main.o: include/spi_def.h
+main.o: include/dma_def.h
 main.o: include/stm32f1xx_hal_rcc.c

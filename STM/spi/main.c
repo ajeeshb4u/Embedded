@@ -8,9 +8,6 @@
 /**********************************	USART DATA	******************************************/
 char g[20]={0x55,0xaa,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,0x11,0x12};
 
-/* Uncomment this line to use the board as master, if not it is used as slave */
-#define MASTER_BOARD	
-	
 /* SPI handler declaration */
 SPI_HandleTypeDef SpiHandle; 				/*defined a struct type SPI_HandleTypeDef */
 	
@@ -78,6 +75,7 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
  }
 
 
+<<<<<<< HEAD
  #ifdef MASTER_BOARD
   /* SPI block is enabled prior calling SPI transmit/receive functions, in order to get CLK signal properly pulled down.
      Otherwise, SPI CLK signal is not clean on this board and leads to errors during transfer */
@@ -126,6 +124,8 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
   }
 
 	
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 SER_Init();
 
 RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
