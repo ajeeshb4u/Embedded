@@ -8,6 +8,9 @@
 /**********************************	USART DATA	******************************************/
 char g[20]={0x55,0xaa,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,0x11,0x12};
 
+/* Uncomment this line to use the board as master, if not it is used as slave */
+#define MASTER_BOARD	
+	
 /* SPI handler declaration */
 SPI_HandleTypeDef SpiHandle; 				/*defined a struct type SPI_HandleTypeDef */
 	
@@ -75,10 +78,6 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
  }
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
  #ifdef MASTER_BOARD
   /* SPI block is enabled prior calling SPI transmit/receive functions, in order to get CLK signal properly pulled down.
      Otherwise, SPI CLK signal is not clean on this board and leads to errors during transfer */
@@ -102,39 +101,36 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
      "aTxBuffer" buffer & receive data through "aRxBuffer" */
   /* Timeout is set to 5S */
   
-  switch(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE, 5000))
+//  switch(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE, 5000))
   {
-    case HAL_OK:
-      /* Communication is completed ___________________________________________ */
+//    case HAL_OK:
+//      /* Communication is completed ___________________________________________ */
       /* Compare the sent and received buffers */
-      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
-      {
+//      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
+//      {
         /* Transfer error in transmission process */
-        Error_Handler();
-      }
+//        Error_Handler();
+//      }
       /* Turn LED2 on: Transfer in transmission/Reception process is correct */
-      BSP_LED_On(LED2);
-      break;
+//      BSP_LED_On(LED2);
+//      break;
 
-    case HAL_TIMEOUT:
+//    case HAL_TIMEOUT:
       /* An Error Occur ______________________________________________________ */
-    case HAL_ERROR:
+//    case HAL_ERROR:
       /* Call Timeout Handler */
-      Error_Handler();
-      break;
-    default:
-      break;
+//      Error_Handler();
+//      break;
+//    default:
+//      break;
   }
 
+
+
 	
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+
+ 
+
 SER_Init();
 
 RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
@@ -267,3 +263,4 @@ static uint16_t Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferL
 }
 
 /***************End Of Program***************/
+

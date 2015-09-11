@@ -8,14 +8,34 @@
 #include "spi_def.h"	
 #include "nvic_def.h"
 #include "stm32f1xx_hal_rcc.c"
-
+#include "def.h"
 
 __weak void HAL_MspInit(void);
-/*
-#ifndef SPIx
-#define SPIx                             SPI2
-#endif
-*/	
+
+
+#define BUTTONn                          1  
+
+/**
+  * @brief Key push-button
+ */
+#define USER_BUTTON_PIN                  GPIO_PIN_0
+#define USER_BUTTON_GPIO_PORT            GPIOA
+#define USER_BUTTON_GPIO_CLK_ENABLE()    __HAL_RCC_GPIOA_CLK_ENABLE()
+#define USER_BUTTON_GPIO_CLK_DISABLE()   __HAL_RCC_GPIOA_CLK_DISABLE()
+#define USER_BUTTON_EXTI_IRQn            EXTI15_10_IRQn
+
+#define BUTTONx_GPIO_CLK_ENABLE(__INDEX__)    do {USER_BUTTON_GPIO_CLK_ENABLE(); } while(0)
+
+#define BUTTONx_GPIO_CLK_DISABLE(__INDEX__)    (USER_BUTTON_GPIO_CLK_DISABLE())
+
+/**
+  * @}
+  */
+
+GPIO_TypeDef* BUTTON_PORT[BUTTONn]  = {USER_BUTTON_GPIO_PORT}; 
+const uint16_t BUTTON_PIN[BUTTONn]  = {USER_BUTTON_PIN}; 
+const uint16_t BUTTON_IRQn[BUTTONn] = {USER_BUTTON_EXTI_IRQn};
+
 
 
 #define SPIx_SCK_GPIO_PORT              GPIOB
@@ -38,8 +58,6 @@ __weak void HAL_MspInit(void);
 /* Exported macro ------------------------------------------------------------*/
 #define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
 
-#define __HAL_SPI_DISABLE(__HANDLE__) CLEAR_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_SPE)
-
 #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
 
 #define CLEAR_BIT(REG, BIT)   ((REG) &= ~(BIT))
@@ -54,6 +72,8 @@ __weak void HAL_MspInit(void);
 
 #define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
 
+#define __HAL_SPI_DISABLE(__HANDLE__) CLEAR_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_SPE)
+#define __HAL_SPI_ENABLE(__HANDLE__)  SET_BIT((__HANDLE__)->Instance->CR1, SPI_CR1_SPE)
 
 #define __HAL_RCC_SPI2_CLK_ENABLE()   do { \
                                         __IO uint32_t tmpreg; \
@@ -70,72 +90,12 @@ __weak void HAL_MspInit(void);
                                       } while(0)
 */
 
-/** 
-  * @brief  SPI handle Structure definition
-  */
-#ifndef SPI_HandleTypeDef
-typedef struct __SPI_HandleTypeDef
-{
-  SPI_TypeDef                *Instance;    /*!< SPI registers base address */
 
-  SPI_InitTypeDef            Init;         /*!< SPI communication parameters */
 
-  uint8_t                    *pTxBuffPtr;  /*!< Pointer to SPI Tx transfer Buffer */
 
-  uint16_t                   TxXferSize;   /*!< SPI Tx transfer size */
-  
-  uint16_t                   TxXferCount;  /*!< SPI Tx Transfer Counter */
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 
-  uint8_t                    *pRxBuffPtr;  /*!< Pointer to SPI Rx transfer Buffer */
 
-  uint16_t                   RxXferSize;   /*!< SPI Rx transfer size */
 
-  uint16_t                   RxXferCount;  /*!< SPI Rx Transfer Counter */
-
-  DMA_HandleTypeDef          *hdmatx;      /*!< SPI Tx DMA handle parameters */
-
-  DMA_HandleTypeDef          *hdmarx;      /*!< SPI Rx DMA handle parameters */
-
-  void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-  uint8_t                    *pRxBuffPtr;  /*!< Pointer to SPI Rx transfer Buffer */
-
-  uint16_t                   RxXferSize;   /*!< SPI Rx transfer size */
-
-  uint16_t                   RxXferCount;  /*!< SPI Rx Transfer Counter */
-
-  DMA_HandleTypeDef          *hdmatx;      /*!< SPI Tx DMA handle parameters */
-
-  DMA_HandleTypeDef          *hdmarx;      /*!< SPI Rx DMA handle parameters */
-
-  void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
-
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-  void                       (*TxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Tx ISR */
-
-  HAL_LockTypeDef            Lock;         /*!< SPI locking object */
-
-  __IO HAL_SPI_StateTypeDef  State;        /*!< SPI communication state */
-
-  __IO uint32_t  ErrorCode;    /*!< SPI Error code */
-
-}SPI_HandleTypeDef;
-#endif
 
 /**
   * @brief This function configures the source of the time base. 
@@ -305,10 +265,6 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
 
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 {  
   BUTTON_USER = 0,
@@ -390,19 +346,6 @@ GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
   }
   return bitstatus;
 }
-
-/**
-  * @brief  Turns selected LED On.
-  * @param  Led: Specifies the Led to be set on. 
-  *   This parameter can be one of following parameters:
-  *     @arg LED2
-  * @retval None
-  */
-void BSP_LED_On(Led_TypeDef Led)
-{
-  HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_SET); 
-}
-
 
 /**
   * @brief  Turns selected LED Off.
@@ -678,12 +621,5 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
 
 
 
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
-=======
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 #endif
+
