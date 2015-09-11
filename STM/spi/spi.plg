@@ -11,320 +11,98 @@ Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
 include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(88): error:  #169: expected a declaration
-include/macros.h(99): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(111): error:  #169: expected a declaration
-include/macros.h(116): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(118): error:  #101: "RxXferSize" has already been declared in the current scope
-include/macros.h(120): error:  #101: "RxXferCount" has already been declared in the current scope
-include/macros.h(122): error:  #101: "hdmatx" has already been declared in the current scope
-include/macros.h(124): error:  #101: "hdmarx" has already been declared in the current scope
-include/macros.h(126): error:  #101: "RxISR" has already been declared in the current scope
-include/macros.h(128): error:  #169: expected a declaration
-include/macros.h(135): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(314): error:  #169: expected a declaration
-include/macros.h(322): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(342): error:  #20: identifier "Button_TypeDef" is undefined
-include/macros.h(347): warning:  #223-D: function "BUTTONx_GPIO_CLK_ENABLE" declared implicitly
-include/macros.h(352): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(357): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(433): error:  #20: identifier "Button_TypeDef" is undefined
-include/macros.h(435): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(435): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(464): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(475): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(485): error:  #136: struct "__SPI_HandleTypeDef" has no field "TxISR"
-include/macros.h(490): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(497): warning:  #223-D: function "__HAL_SPI_ENABLE" declared implicitly
-include/macros.h(518): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(518): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(523): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(524): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(532): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(532): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(548): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(553): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(554): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(561): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(561): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(566): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(567): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(589): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(589): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(594): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(602): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(602): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(88): error:  #169: expected a declaration
-include/macros.h(99): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(111): error:  #169: expected a declaration
-include/macros.h(116): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(118): error:  #101: "RxXferSize" has already been declared in the current scope
-include/macros.h(120): error:  #101: "RxXferCount" has already been declared in the current scope
-include/macros.h(122): error:  #101: "hdmatx" has already been declared in the current scope
-include/macros.h(124): error:  #101: "hdmarx" has already been declared in the current scope
-include/macros.h(126): error:  #101: "RxISR" has already been declared in the current scope
-include/macros.h(128): error:  #169: expected a declaration
-include/macros.h(135): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(314): error:  #169: expected a declaration
-include/macros.h(322): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(342): error:  #20: identifier "Button_TypeDef" is undefined
-include/macros.h(347): warning:  #223-D: function "BUTTONx_GPIO_CLK_ENABLE" declared implicitly
-include/macros.h(352): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(357): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(433): error:  #20: identifier "Button_TypeDef" is undefined
-include/macros.h(435): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(435): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(464): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(475): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(485): error:  #136: struct "__SPI_HandleTypeDef" has no field "TxISR"
-include/macros.h(490): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(497): warning:  #223-D: function "__HAL_SPI_ENABLE" declared implicitly
-include/macros.h(518): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(518): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(523): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(524): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(532): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(532): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(548): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(553): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(554): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(561): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(561): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(566): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(567): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(589): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(589): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(594): error:  #136: struct "__SPI_HandleTypeDef" has no field "pRxBuffPtr"
-include/macros.h(602): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(602): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(280): error:  #169: expected a declaration
-include/macros.h(288): warning:  #12-D: parsing restarts here after previous syntax error
-include/macros.h(308): error:  #20: identifier "Button_TypeDef" is undefined
-include/macros.h(313): warning:  #223-D: function "BUTTONx_GPIO_CLK_ENABLE" declared implicitly
-include/macros.h(318): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(323): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(399): error:  #20: identifier "Button_TypeDef" is undefined
-include/macros.h(401): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(401): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(430): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(456): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(463): warning:  #223-D: function "__HAL_SPI_ENABLE" declared implicitly
-include/macros.h(484): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(484): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(498): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(498): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(514): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(527): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(527): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(555): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(555): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(568): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(568): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(583): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(594): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(594): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(609): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(609): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(620): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(620): error:  #20: identifier "SPI_FLAG_BSY" is undefined
-include/macros.h(629): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(629): error:  #20: identifier "SPI_FLAG_CRCERR" is undefined
-include/macros.h(633): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(636): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(642): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(654): error:  #169: expected a declaration
-main.c(9): warning:  #12-D: parsing restarts here after previous syntax error
-main.c(158): error:  #20: identifier "g" is undefined
-main.c(196): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(197): warning:  #550-D: variable "oscinitstruct" was set but never used
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(308): warning:  #223-D: function "BUTTONx_GPIO_CLK_ENABLE" declared implicitly
-include/macros.h(313): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(318): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(396): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(396): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(425): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(451): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(458): warning:  #223-D: function "__HAL_SPI_ENABLE" declared implicitly
-include/macros.h(479): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(479): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(493): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(493): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(509): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(522): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(522): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(550): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(550): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(563): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(563): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(578): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(589): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(589): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(604): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(604): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(615): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(615): error:  #20: identifier "SPI_FLAG_BSY" is undefined
-include/macros.h(624): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(624): error:  #20: identifier "SPI_FLAG_CRCERR" is undefined
-include/macros.h(628): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(631): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(637): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(649): error:  #169: expected a declaration
-main.c(9): warning:  #12-D: parsing restarts here after previous syntax error
-main.c(158): error:  #20: identifier "g" is undefined
-main.c(196): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(197): warning:  #550-D: variable "oscinitstruct" was set but never used
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(308): warning:  #223-D: function "BUTTONx_GPIO_CLK_ENABLE" declared implicitly
-include/macros.h(313): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(318): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(396): error:  #20: identifier "BUTTON_PORT" is undefined
-include/macros.h(396): error:  #20: identifier "BUTTON_PIN" is undefined
-include/macros.h(425): warning:  #223-D: function "__HAL_LOCK" declared implicitly
-include/macros.h(451): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(458): warning:  #223-D: function "__HAL_SPI_ENABLE" declared implicitly
-include/macros.h(479): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(479): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(493): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(493): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(509): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(522): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(522): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(550): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(550): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(563): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(563): error:  #20: identifier "SPI_FLAG_TXE" is undefined
-include/macros.h(578): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(589): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(589): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(604): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(604): error:  #20: identifier "SPI_FLAG_RXNE" is undefined
-include/macros.h(615): warning:  #223-D: function "SPI_WaitOnFlagUntilTimeout" declared implicitly
-include/macros.h(615): error:  #20: identifier "SPI_FLAG_BSY" is undefined
-include/macros.h(624): warning:  #223-D: function "__HAL_SPI_GET_FLAG" declared implicitly
-include/macros.h(624): error:  #20: identifier "SPI_FLAG_CRCERR" is undefined
-include/macros.h(628): warning:  #223-D: function "SPI_RESET_CRC" declared implicitly
-include/macros.h(631): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(637): warning:  #223-D: function "__HAL_UNLOCK" declared implicitly
-include/macros.h(649): error:  #169: expected a declaration
-main.c(9): warning:  #12-D: parsing restarts here after previous syntax error
-main.c(128): error:  #20: identifier "g" is undefined
-main.c(166): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(167): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(211): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-Target not created
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(760): warning:  #1-D: last line of file ends without a newline
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(624): warning:  #1-D: last line of file ends without a newline
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(265): warning:  #1-D: last line of file ends without a newline
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
-"spi.axf" - 0 Error(s), 7 Warning(s).
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/def.h(760): warning:  #1-D: last line of file ends without a newline
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-include/macros.h(624): warning:  #1-D: last line of file ends without a newline
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(265): warning:  #1-D: last line of file ends without a newline
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-compiling system_stm32f10x.c...
-compiling serial.c...
-linking...
-Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
-"spi.axf" - 0 Error(s), 7 Warning(s).
-Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
 main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
 main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
 main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
 compiling system_stm32f10x.c...
 compiling serial.c...
 linking...
-Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
+Program Size: Code=4630 RO-data=290 RW-data=168 ZI-data=1840  
 "spi.axf" - 0 Error(s), 4 Warning(s).
-Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
-Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
 Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
 main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
 main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
 main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
 compiling system_stm32f10x.c...
 compiling serial.c...
 linking...
-Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
-"spi.axf" - 0 Error(s), 4 Warning(s).
-Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
-Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
-Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
+Program Size: Code=4630 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+main.c(206): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(207): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(251): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4630 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
 Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
 Erase Done.
 Programming Done.
 Verify OK.
-Build target 'Target 1'
-compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
-linking...
-Program Size: Code=4630 RO-data=290 RW-data=168 ZI-data=1840  
-"spi.axf" - 0 Error(s), 4 Warning(s).
 Rebuild target 'Target 1'
 assembling startup_stm32f10x_md.s...
 compiling main.c...
-include/stm32f1xx_hal_rcc.c(10): warning:  #14-D: extra text after expected end of preprocessing directive
-main.c(205): warning:  #550-D: variable "clkinitstruct" was set but never used
-main.c(206): warning:  #550-D: variable "oscinitstruct" was set but never used
-main.c(250): warning:  #177-D: function "Buffercmp" was declared but never referenced
+main.c(199): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(200): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(244): warning:  #177-D: function "Buffercmp" was declared but never referenced
 compiling system_stm32f10x.c...
 compiling serial.c...
 linking...
-Program Size: Code=4630 RO-data=290 RW-data=168 ZI-data=1840  
-"spi.axf" - 0 Error(s), 4 Warning(s).
+Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+main.c(199): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(200): warning:  #550-D: variable "oscinitstruct" was set but never used
+main.c(244): warning:  #177-D: function "Buffercmp" was declared but never referenced
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4658 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 3 Warning(s).
+Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+main.c(133): warning:  #223-D: function "BSP_LED_On" declared implicitly
+main.c(199): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(200): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+spi.axf: Error: L6218E: Undefined symbol BSP_LED_On (referred from main.o).
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+include/macros.h(357): error:  #247: function "BSP_LED_Off" has already been defined
+main.c(199): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(200): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+Target not created
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+main.c(199): warning:  #550-D: variable "clkinitstruct" was set but never used
+main.c(200): warning:  #550-D: variable "oscinitstruct" was set but never used
+compiling system_stm32f10x.c...
+compiling serial.c...
+linking...
+Program Size: Code=4726 RO-data=290 RW-data=168 ZI-data=1840  
+"spi.axf" - 0 Error(s), 2 Warning(s).
+Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
+Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
 Load "C:\\Embedded\\STM\\spi\\spi.AXF" 
 Erase Done.
 Programming Done.

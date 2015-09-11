@@ -42,6 +42,24 @@ int main(void)
        - Low Level Initialization
      */
 HAL_Init();
+
+SER_Init();
+
+RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
+RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
+	
+#if (LED_BLUE_PIN > 7)
+  LED_BLUE_GPIO->CRH = (LED_BLUE_GPIO->CRH & CONFMASKH(LED_BLUE_PIN)) | GPIOPINCONFH(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
+#else
+  LED_BLUE_GPIO->CRL = (LED_BLUE_GPIO->CRL & CONFMASKL(LED_BLUE_PIN)) | GPIOPINCONFL(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
+#endif
+
+TIM3->PSC = 38461;	     // Set prescaler to 24 000 (PSC + 1)
+TIM3->ARR = 2000;	      // Auto reload value 1000
+TIM3->DIER = TIM_DIER_UIE; // Enable update interrupt (timer level)
+TIM3->CR1 = TIM_CR1_CEN;   // Enable timer
+
+NVIC_EnableIRQ(TIM3_IRQn); // Enable interrupt from TIM3 (NVIC level)
 	
 /* Configure the system clock to 64 MHz */
 SystemClock_Config();
@@ -101,55 +119,31 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
      "aTxBuffer" buffer & receive data through "aRxBuffer" */
   /* Timeout is set to 5S */
   
-//  switch(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE, 5000))
+  switch(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE, 5000))
   {
-//    case HAL_OK:
+    case HAL_OK:
 //      /* Communication is completed ___________________________________________ */
       /* Compare the sent and received buffers */
-//      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
-//      {
+      if (Buffercmp((uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE))
+      {
         /* Transfer error in transmission process */
-//        Error_Handler();
-//      }
+        Error_Handler();
+      }
       /* Turn LED2 on: Transfer in transmission/Reception process is correct */
-//      BSP_LED_On(LED2);
-//      break;
+      BSP_LED_On(LED2);
+      break;
 
-//    case HAL_TIMEOUT:
+    case HAL_TIMEOUT:
       /* An Error Occur ______________________________________________________ */
-//    case HAL_ERROR:
+    case HAL_ERROR:
       /* Call Timeout Handler */
-//      Error_Handler();
-//      break;
-//    default:
-//      break;
+      Error_Handler();
+      break;
+    default:
+      break;
   }
 
-
-
-	
-
- 
-
-SER_Init();
-
-RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
-RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
-	
-#if (LED_BLUE_PIN > 7)
-  LED_BLUE_GPIO->CRH = (LED_BLUE_GPIO->CRH & CONFMASKH(LED_BLUE_PIN)) | GPIOPINCONFH(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
-#else
-  LED_BLUE_GPIO->CRL = (LED_BLUE_GPIO->CRL & CONFMASKL(LED_BLUE_PIN)) | GPIOPINCONFL(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
-#endif
-
-TIM3->PSC = 38461;	     // Set prescaler to 24 000 (PSC + 1)
-TIM3->ARR = 2000;	      // Auto reload value 1000
-TIM3->DIER = TIM_DIER_UIE; // Enable update interrupt (timer level)
-TIM3->CR1 = TIM_CR1_CEN;   // Enable timer
-
-NVIC_EnableIRQ(TIM3_IRQn); // Enable interrupt from TIM3 (NVIC level)
-
-while (1);
+	while (1);
 }
 
 //=============================================================================

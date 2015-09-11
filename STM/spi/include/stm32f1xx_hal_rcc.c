@@ -7,9 +7,9 @@
   */
 const uint8_t aAPBAHBPrescTable[16] = {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
 
-#ifndef POSITION_VAL(VAL)
+//#ifndef POSITION_VAL(VAL)
 #define POSITION_VAL(VAL)     (__CLZ(__RBIT(VAL))) 
-#endif
+//#endif
 
 
 /**
