@@ -1,9 +1,6 @@
 Dependencies for Project 'spi', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_stm32f10x_md.s)(0x4F5858E4)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x --pd "STM32F10X_MD SETA 1" --list "startup_stm32f10x_md.lst" --xref -o "startup_stm32f10x_md.o" --depend "startup_stm32f10x_md.d")
-<<<<<<< HEAD
-F (.\main.c)(0x55F1C743)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_MD -D__USART1 -o "main.o" --omf_browse "main.crf" --depend "main.d")
-=======
-F (.\main.c)(0x55EFBCE2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_MD -D__USART1 -o "main.o" --omf_browse "main.crf" --depend "main.d")
+F (.\main.c)(0x55F26488)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_MD -D__USART1 -o "main.o" --omf_browse "main.crf" --depend "main.d")
 I (C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h)(0x55B600C9)
 I (C:\Keil\ARM\CMSIS\Include\core_cm3.h)(0x50064CAA)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB0F5AC)
@@ -22,7 +19,6 @@ I (include/macros.h)(0x55EFD1F3)
 I (include/spi_def.h)(0x55EFC954)
 I (include/dma_def.h)(0x55D44021)
 I (include/stm32f1xx_hal_rcc.c)(0x55E83478)
->>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 F (.\system_stm32f10x.c)(0x4F585C5C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_MD -D__USART1 -o "system_stm32f10x.o" --omf_browse "system_stm32f10x.crf" --depend "system_stm32f10x.d")
 I (C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h)(0x55B600C9)
 I (C:\Keil\ARM\CMSIS\Include\core_cm3.h)(0x50064CAA)
