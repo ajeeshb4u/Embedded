@@ -87,6 +87,9 @@ typedef struct __SPI_HandleTypeDef
   uint16_t                   TxXferCount;  /*!< SPI Tx Transfer Counter */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 
@@ -103,6 +106,7 @@ typedef struct __SPI_HandleTypeDef
   void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   uint8_t                    *pRxBuffPtr;  /*!< Pointer to SPI Rx transfer Buffer */
@@ -117,6 +121,8 @@ typedef struct __SPI_HandleTypeDef
 
   void                       (*RxISR)(struct __SPI_HandleTypeDef * hspi); /*!< function pointer on Rx ISR */
 
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -299,6 +305,7 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
 
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -671,6 +678,8 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
 
 
 
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======

@@ -183,6 +183,7 @@
       <tvExp>0</tvExp>
       <Focus>0</Focus>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ColumnNumber>9</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>190</TopLine>
@@ -192,6 +193,12 @@
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>58</TopLine>
       <CurrentLine>71</CurrentLine>
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
+      <ColumnNumber>2</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>55</TopLine>
+      <CurrentLine>70</CurrentLine>
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>

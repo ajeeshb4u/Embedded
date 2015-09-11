@@ -78,6 +78,7 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  #ifdef MASTER_BOARD
   /* SPI block is enabled prior calling SPI transmit/receive functions, in order to get CLK signal properly pulled down.
      Otherwise, SPI CLK signal is not clean on this board and leads to errors during transfer */
@@ -126,6 +127,8 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
   }
 
 	
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======

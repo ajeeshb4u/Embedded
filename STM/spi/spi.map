@@ -22,6 +22,10 @@ Section Cross References
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    main.o(.text) refers to system_stm32f10x.o(.data) for SystemCoreClock
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
     main.o(.text) refers to system_stm32f10x.o(.data) for SystemCoreClock
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -259,6 +263,7 @@ Image Symbol Table
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     SPI_WaitOnFlagUntilTimeout               0x0800069d   Thumb Code   274  main.o(.text)
     Error_Handler                            0x08000de7   Thumb Code    18  main.o(.text)
     Buffercmp                                0x08000df9   Thumb Code    36  main.o(.text)
@@ -290,6 +295,8 @@ Image Symbol Table
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
     Error_Handler                            0x080008ab   Thumb Code    18  main.o(.text)
     Buffercmp                                0x080009f9   Thumb Code    36  main.o(.text)
     .text                                    0x08000a68   Section        0  system_stm32f10x.o(.text)
@@ -317,6 +324,9 @@ Image Symbol Table
     __initial_sp                             0x200007d0   Data           0  startup_stm32f10x_md.o(STACK)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -472,6 +482,7 @@ Image Symbol Table
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     HAL_RCC_GetSysClockFreq                  0x080007af   Thumb Code   146  main.o(.text)
     HAL_RCC_GetHCLKFreq                      0x08000841   Thumb Code    42  main.o(.text)
     HAL_InitTick                             0x0800086b   Thumb Code    36  main.o(.text)
@@ -521,6 +532,8 @@ Image Symbol Table
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
     HAL_RCC_GetSysClockFreq                  0x0800069d   Thumb Code   146  main.o(.text)
     HAL_RCC_GetHCLKFreq                      0x0800072f   Thumb Code    42  main.o(.text)
     HAL_InitTick                             0x08000759   Thumb Code    36  main.o(.text)
@@ -559,6 +572,9 @@ Image Symbol Table
     Region$$Table$$Limit                     0x08000dfc   Number         0  anon$$obj.o(Region$$Table)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -585,9 +601,15 @@ Memory Map of the image
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001440, Max: 0x00010000, ABSOLUTE)
 
     Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00001398, Max: 0x00010000, ABSOLUTE)
+=======
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000ea0, Max: 0x00010000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00000dfc, Max: 0x00010000, ABSOLUTE)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
   Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000ea0, Max: 0x00010000, ABSOLUTE)
 
@@ -656,6 +678,7 @@ Memory Map of the image
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     0x080001c8   0x00000e38   Code   RO           12    .text               main.o
     0x08001000   0x000001c8   Code   RO           94    .text               system_stm32f10x.o
     0x080011c8   0x000000d8   Code   RO          124    .text               serial.o
@@ -674,6 +697,8 @@ Memory Map of the image
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000007d8, Max: 0x00005000, ABSOLUTE)
 =======
+=======
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
@@ -697,6 +722,9 @@ Memory Map of the image
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000007d0, Max: 0x00005000, ABSOLUTE)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
+=======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -724,7 +752,11 @@ Image component sizes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       3640        172         22        148        203     274180   main.o
+=======
+      2208        132         18        144        203     269285   main.o
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
       2208        132         18        144        203     269285   main.o
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -742,7 +774,11 @@ Image component sizes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       4376        252        290        168       1740     277328   Object Totals
+=======
+      2944        212        286        164       1740     272433   Object Totals
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
       2944        212        286        164       1740     272433   Object Totals
 >>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
@@ -804,6 +840,7 @@ Image component sizes
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       4726        268        290        168       1840     277464   Grand Totals
       4726        268        290        168       1840     277464   ELF Image Totals
       4726        268        290        168          0          0   ROM Totals
@@ -813,6 +850,17 @@ Image component sizes
     Total RO  Size (Code + RO Data)                 5016 (   4.90kB)
     Total RW  Size (RW Data + ZI Data)              2008 (   1.96kB)
     Total ROM Size (Code + RO Data + RW Data)       5184 (   5.06kB)
+=======
+      3294        228        286        164       1836     272569   Grand Totals
+      3294        228        286        164       1836     272569   ELF Image Totals
+      3294        228        286        164          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 3580 (   3.50kB)
+    Total RW  Size (RW Data + ZI Data)              2000 (   1.95kB)
+    Total ROM Size (Code + RO Data + RW Data)       3744 (   3.66kB)
+>>>>>>> parent of 6987c97... HAL_SPI_TransmitReceive
 =======
       3294        228        286        164       1836     272569   Grand Totals
       3294        228        286        164       1836     272569   ELF Image Totals
