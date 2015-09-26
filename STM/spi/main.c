@@ -6,8 +6,8 @@
 #include "include/stm32f1xx_hal_rcc_ex.h"
 
 /**********************************	USART DATA	******************************************/
-char g[20]={0x55,0xaa,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,0x11,0x12};
-
+//char g[20]={0x55,0xaa,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,0x11,0x12};
+uint32_t reg_check;
 /* Uncomment this line to use the board as master, if not it is used as slave */
 #define MASTER_BOARD	
 	
@@ -31,6 +31,7 @@ static uint16_t Buffercmp(uint8_t *pBuffer1, uint8_t *pBuffer2, uint16_t BufferL
 /******************************************************************************************/	
 int main(void)
 {
+	reg_check=RCC->CFGR;
 /* STM32F103xB HAL library initialization:
        - Configure the Flash prefetch
        - Systick timer is configured by default as source of time base, but user 
@@ -43,27 +44,31 @@ int main(void)
      */
 HAL_Init();
 
-SER_Init();
+//SER_Init();
 
-RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
-RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
+//RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;
+//RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
 	
-#if (LED_BLUE_PIN > 7)
-  LED_BLUE_GPIO->CRH = (LED_BLUE_GPIO->CRH & CONFMASKH(LED_BLUE_PIN)) | GPIOPINCONFH(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
-#else
-  LED_BLUE_GPIO->CRL = (LED_BLUE_GPIO->CRL & CONFMASKL(LED_BLUE_PIN)) | GPIOPINCONFL(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
-#endif
+//#if (LED_BLUE_PIN > 7)
+//  LED_BLUE_GPIO->CRH = (LED_BLUE_GPIO->CRH & CONFMASKH(LED_BLUE_PIN)) | GPIOPINCONFH(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
+//#else
+//  LED_BLUE_GPIO->CRL = (LED_BLUE_GPIO->CRL & CONFMASKL(LED_BLUE_PIN)) | GPIOPINCONFL(LED_BLUE_PIN,     GPIOCONF(GPIO_MODE_OUTPUT2MHz, GPIO_CNF_OUTPUT_PUSHPULL));
+//#endif
 
-TIM3->PSC = 38461;	     // Set prescaler to 24 000 (PSC + 1)
-TIM3->ARR = 2000;	      // Auto reload value 1000
-TIM3->DIER = TIM_DIER_UIE; // Enable update interrupt (timer level)
-TIM3->CR1 = TIM_CR1_CEN;   // Enable timer
+//TIM3->PSC = 38461;	     // Set prescaler to 24 000 (PSC + 1)
+//TIM3->ARR = 2000;	      // Auto reload value 1000
+//TIM3->DIER = TIM_DIER_UIE; // Enable update interrupt (timer level)
+//TIM3->CR1 = TIM_CR1_CEN;   // Enable timer
 
-NVIC_EnableIRQ(TIM3_IRQn); // Enable interrupt from TIM3 (NVIC level)
-	
+//NVIC_EnableIRQ(TIM3_IRQn); // Enable interrupt from TIM3 (NVIC level)
+
+	reg_check=RCC->CFGR;
+
 /* Configure the system clock to 64 MHz */
 SystemClock_Config();
-	
+
+	reg_check=RCC->CFGR;
+
 /* Configure LED2 */
 BSP_LED_Init(LED2);
 /* After removing all the errors.... change the led pin to PA5 */
@@ -149,7 +154,7 @@ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
 //=============================================================================
 // TIM3 Interrupt Handler
 //=============================================================================
-void TIM3_IRQHandler(void)
+/*void TIM3_IRQHandler(void)
 {
 if(TIM3->SR & TIM_SR_UIF) // if UIF flag is set
   {
@@ -162,7 +167,7 @@ if(TIM3->SR & TIM_SR_UIF) // if UIF flag is set
 	}
   }
 }
-
+*/
 /**
   * @brief  This function is executed in case of error occurrence.
   * @param  None
@@ -198,7 +203,9 @@ void SystemClock_Config(void)
 {
   RCC_ClkInitTypeDef clkinitstruct = {0};
   RCC_OscInitTypeDef oscinitstruct = {0};
-  
+  UNUSED(clkinitstruct);
+  UNUSED(oscinitstruct);
+
   /* Configure PLL ------------------------------------------------------*/
   /* PLL configuration: PLLCLK = (HSI / 2) * PLLMUL = (8 / 2) * 16 = 64 MHz */
   /* PREDIV1 configuration: PREDIV1CLK = PLLCLK / HSEPredivValue = 64 / 1 = 64 MHz */
@@ -212,11 +219,13 @@ void SystemClock_Config(void)
   oscinitstruct.PLL.PLLState    = RCC_PLL_ON;
   oscinitstruct.PLL.PLLSource   = RCC_PLLSOURCE_HSI_DIV2;
   oscinitstruct.PLL.PLLMUL      = RCC_PLL_MUL16;
+	reg_check=RCC->CFGR;
+
 //  if (HAL_RCC_OscConfig(&oscinitstruct)!= HAL_OK)
- // {
+  {
     /* Initialization Error */
-   // while(1); 
-  //}
+//    while(1); 
+  }
 
   /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
      clocks dividers */

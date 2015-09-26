@@ -1,0 +1,33 @@
+*** Creating Trace Output File 'SPI_IT.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup_stm32f10x_md.o"'
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '"stm32f1xx_hal_msp.o"'
+### List of Objects: adding '"stm32f1xx_it.o"'
+### List of Objects: adding '"stm32f1xx_nucleo.o"'
+### List of Objects: adding '"stm32f1xx_hal.o"'
+### List of Objects: adding '"stm32f1xx_hal_cortex.o"'
+### List of Objects: adding '"stm32f1xx_hal_dma.o"'
+### List of Objects: adding '"stm32f1xx_hal_gpio.o"'
+### List of Objects: adding '"stm32f1xx_hal_rcc.o"'
+### List of Objects: adding '"stm32f1xx_hal_rcc_ex.o"'
+### List of Objects: adding '"stm32f1xx_hal_spi.o"'
+### List of Objects: adding '"stm32f1xx_hal_spi_ex.o"'
+### List of Objects: adding '"system_stm32f1xx.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup_stm32f10x_md.o" "main.o" "stm32f1xx_hal_msp.o" "stm32f1xx_it.o" "stm32f1xx_nucleo.o" "stm32f1xx_hal.o" "stm32f1xx_hal_cortex.o" "stm32f1xx_hal_dma.o" "stm32f1xx_hal_gpio.o" "stm32f1xx_hal_rcc.o" "stm32f1xx_hal_rcc_ex.o" "stm32f1xx_hal_spi.o" "stm32f1xx_hal_spi_ex.o" "system_stm32f1xx.o" 
+--strict --scatter "SPI_IT.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\SPI_IT.map" -o SPI_IT.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'SPI_IT.axf'
+### ADS-LD Command File: 'SPI_IT.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'SPI_IT.lnp', Handle=0x0000080C
+### Writing '.lnp' file
+### ADS-LD Command file 'SPI_IT.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

@@ -407,11 +407,6 @@
               <FilePath>.\system_stm32f10x.c</FilePath>
             </File>
             <File>
-              <FileName>def.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\include\def.h</FilePath>
-            </File>
-            <File>
               <FileName>serial.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\include\serial.c</FilePath>

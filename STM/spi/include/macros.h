@@ -4,7 +4,8 @@
 	
 #ifndef __MACROS_H
 #define __MACROS_H
-	
+
+#include <stm32f10x.h>
 #include "spi_def.h"	
 #include "nvic_def.h"
 #include "stm32f1xx_hal_rcc.c"
@@ -113,10 +114,11 @@ const uint16_t BUTTON_IRQn[BUTTONn] = {USER_BUTTON_EXTI_IRQn};
   * @param TickPriority: Tick interrupt priority.
   * @retval HAL status
   */
+	//SysTick_IRQn=-1;
 __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
   /*Configure the SysTick to have interrupt in 1ms time basis*/
-  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);			/*here HAL_RCC_GetHCLKFreq returns 72000000*/
 
   /*Configure the SysTick IRQ priority */
   HAL_NVIC_SetPriority(SysTick_IRQn, TickPriority ,0);

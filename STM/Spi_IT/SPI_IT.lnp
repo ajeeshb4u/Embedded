@@ -1,0 +1,5 @@
+--cpu Cortex-M3 "startup_stm32f10x_md.o" "main.o" "stm32f1xx_hal_msp.o" "stm32f1xx_it.o" "stm32f1xx_nucleo.o" "stm32f1xx_hal.o" "stm32f1xx_hal_cortex.o" "stm32f1xx_hal_dma.o" "stm32f1xx_hal_gpio.o" "stm32f1xx_hal_rcc.o" "stm32f1xx_hal_rcc_ex.o" "stm32f1xx_hal_spi.o" "stm32f1xx_hal_spi_ex.o" "system_stm32f1xx.o" 
+--strict --scatter "SPI_IT.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\SPI_IT.map" -o SPI_IT.axf

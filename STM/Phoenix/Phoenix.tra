@@ -1,0 +1,22 @@
+*** Creating Trace Output File 'Phoenix.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup_stm32f10x_md.o"'
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '"system_stm32f10x.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup_stm32f10x_md.o" "main.o" "system_stm32f10x.o" 
+--strict --scatter "Phoenix.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Phoenix.map" -o Phoenix.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'Phoenix.axf'
+### ADS-LD Command File: 'Phoenix.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'Phoenix.lnp', Handle=0x00000824
+### Writing '.lnp' file
+### ADS-LD Command file 'Phoenix.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

@@ -104,4 +104,3 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
 }
 
 
-
