@@ -1,0 +1,42 @@
+*** Creating Trace Output File 'Ecg_12lead Configuration\Ecg_12lead Configuration.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"ecg_12lead configuration\system_stm32f1xx.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_gpio.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_gpio_ex.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_flash_ex.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_pwr.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_spi_ex.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_dma.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_rcc_ex.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_spi.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_uart.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_adc.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_tim.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_rcc.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_tim_ex.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_i2c.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_adc_ex.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_flash.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_cortex.o"'
+### List of Objects: adding '"ecg_12lead configuration\main.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_it.o"'
+### List of Objects: adding '"ecg_12lead configuration\stm32f1xx_hal_msp.o"'
+### List of Objects: adding '"ecg_12lead configuration\startup_stm32f103xb.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "ecg_12lead configuration\system_stm32f1xx.o" "ecg_12lead configuration\stm32f1xx_hal_gpio.o" "ecg_12lead configuration\stm32f1xx_hal_gpio_ex.o" "ecg_12lead configuration\stm32f1xx_hal_flash_ex.o" "ecg_12lead configuration\stm32f1xx_hal_pwr.o" "ecg_12lead configuration\stm32f1xx_hal_spi_ex.o" "ecg_12lead configuration\stm32f1xx_hal_dma.o" "ecg_12lead configuration\stm32f1xx_hal_rcc_ex.o" "ecg_12lead configuration\stm32f1xx_hal_spi.o" "ecg_12lead configuration\stm32f1xx_hal_uart.o" "ecg_12lead configuration\stm32f1xx_hal_adc.o" "ecg_12lead configuration\stm32f1xx_hal_tim.o" "ecg_12lead configuration\stm32f1xx_hal_rcc.o" "ecg_12lead configuration\stm32f1xx_hal_tim_ex.o" "ecg_12lead configuration\stm32f1xx_hal_i2c.o" "ecg_12lead configuration\stm32f1xx_hal.o" "ecg_12lead configuration\stm32f1xx_hal_adc_ex.o" "ecg_12lead configuration\stm32f1xx_hal_flash.o" "ecg_12lead configuration\stm32f1xx_hal_cortex.o" "ecg_12lead configuration\main.o" "ecg_12lead configuration\stm32f1xx_it.o" "ecg_12lead configuration\stm32f1xx_hal_msp.o" "ecg_12lead configuration\startup_stm32f103xb.o" 
+--library_type=microlib --strict --scatter "Ecg_12lead Configuration\Ecg_12lead Configuration.sct" 
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list "Ecg_12lead Configuration.map" -o "Ecg_12lead Configuration\Ecg_12lead Configuration.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'Ecg_12lead Configuration\Ecg_12lead Configuration.axf'
+### ADS-LD Command File: 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp', Handle=0x000002F8
+### Writing '.lnp' file
+### ADS-LD Command file 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
