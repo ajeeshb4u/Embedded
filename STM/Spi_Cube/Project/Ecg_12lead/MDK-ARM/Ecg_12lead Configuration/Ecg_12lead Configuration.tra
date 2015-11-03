@@ -33,7 +33,7 @@
 ### ADS-LD Output File: 'Ecg_12lead Configuration\Ecg_12lead Configuration.axf'
 ### ADS-LD Command File: 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp', Handle=0x000002F8
+### Creating CmdFile 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp', Handle=0x00000308
 ### Writing '.lnp' file
 ### ADS-LD Command file 'Ecg_12lead Configuration\Ecg_12lead Configuration.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
