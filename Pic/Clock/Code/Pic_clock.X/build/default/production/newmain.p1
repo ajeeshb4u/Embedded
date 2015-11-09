@@ -1,15 +1,19 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"11 newmain.c
+"12 newmain.c
 [v _InitTimer1 `(v ~T0 @X0 0 ef ]
 "1459 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
 "1288
 [v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"1337
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "160
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "331
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"209
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "448
 [s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S19 . RBIF INTF TMR0IF RBIE INTE TMR0IE PEIE GIE ]
@@ -21,6 +25,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S18 . . . ]
 "465
 [v _INTCONbits `VS18 ~T0 @X0 0 e@11 ]
+"13 newmain.c
+[v _element `(uc ~T0 @X0 0 ef1`uc ]
+[v F1091 `(v ~T0 @X0 1 tf1`ul ]
+"150 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h
+[v __delay `JF1091 ~T0 @X0 0 e ]
+[p i __delay ]
+"215 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S9 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S9 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"214
+[u S8 `S9 1 ]
+[n S8 . . ]
+"226
+[v _PORTBbits `VS8 ~T0 @X0 0 e@6 ]
 "643
 [s S26 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S26 . TMR1ON TMR1CS nT1SYNC T1OSCEN T1CKPS ]
@@ -51,14 +69,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S21 . . ]
 "536
 [v _PIR1bits `VS21 ~T0 @X0 0 e@12 ]
-"337
-[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S13 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"336
-[u S12 `S13 1 ]
-[n S12 . . ]
-"348
-[v _PORTDbits `VS12 ~T0 @X0 0 e@8 ]
 "619
 [v _TMR1 `Vus ~T0 @X0 0 e@14 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -1078,129 +1088,424 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
-[; ;newmain.c: 11: void InitTimer1(void);
-[; ;newmain.c: 12: void interrupt ISR(void);
-"14 newmain.c
+[; ;newmain.c: 12: void InitTimer1(void);
+[; ;newmain.c: 13: char element(char num);
+[; ;newmain.c: 14: void interrupt ISR(void);
+"16 newmain.c
 [p x FOSC=HS ]
-"15
-[p x WDTE=OFF ]
-"16
-[p x PWRTE=OFF ]
 "17
-[p x BOREN=OFF ]
+[p x WDTE=OFF ]
 "18
-[p x LVP=OFF ]
+[p x PWRTE=OFF ]
 "19
-[p x CPD=OFF ]
+[p x BOREN=OFF ]
 "20
-[p x WRT=OFF ]
+[p x LVP=OFF ]
 "21
+[p x CPD=OFF ]
+"22
+[p x WRT=OFF ]
+"23
 [p x CP=OFF ]
-"24
-[v _main `(i ~T0 @X0 1 ef ]
 "25
+[v _tim_sec `uc ~T0 @X0 1 e ]
+[i _tim_sec
+-> -> 0 `i `uc
+]
+[v _tim_min `uc ~T0 @X0 1 e ]
+[i _tim_min
+-> -> 0 `i `uc
+]
+[v _tim_hr `uc ~T0 @X0 1 e ]
+[i _tim_hr
+-> -> 0 `i `uc
+]
+[; ;newmain.c: 25: unsigned char tim_sec=0,tim_min=0,tim_hr=0;
+"27
+[v _main `(i ~T0 @X0 1 ef ]
+"28
 {
-[; ;newmain.c: 24: int main()
-[; ;newmain.c: 25: {
+[; ;newmain.c: 27: int main()
+[; ;newmain.c: 28: {
 [e :U _main ]
 [f ]
-[; ;newmain.c: 26: InitTimer1();
-"26
-[e ( _InitTimer1 ..  ]
-[; ;newmain.c: 27: TRISD = 0x00;
-"27
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;newmain.c: 28: TRISA = 0x00;
-"28
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;newmain.c: 29: PORTA=0x01;
+[; ;newmain.c: 29: InitTimer1();
 "29
-[e = _PORTA -> -> 1 `i `uc ]
-[; ;newmain.c: 30: PORTD=0xFF;
+[e ( _InitTimer1 ..  ]
+[; ;newmain.c: 30: TRISD = 0x00;
 "30
-[e = _PORTD -> -> 255 `i `uc ]
-[; ;newmain.c: 31: INTCONbits.GIE=1;
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;newmain.c: 31: TRISA = 0b00110000;
 "31
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;newmain.c: 32: INTCONbits.PEIE=1;
+[e = _TRISA -> -> 48 `i `uc ]
+[; ;newmain.c: 32: TRISB = 0b00000010;
 "32
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;newmain.c: 34: while(1);
+[e = _TRISB -> -> 2 `i `uc ]
+[; ;newmain.c: 33: PORTA=0xff;
+"33
+[e = _PORTA -> -> 255 `i `uc ]
+[; ;newmain.c: 34: PORTD=0x7f;
 "34
+[e = _PORTD -> -> 127 `i `uc ]
+[; ;newmain.c: 35: PORTB=0xff;
+"35
+[e = _PORTB -> -> 255 `i `uc ]
+[; ;newmain.c: 36: INTCONbits.GIE=1;
+"36
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;newmain.c: 37: INTCONbits.PEIE=1;
+"37
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;newmain.c: 39: while(1)
+"39
 [e :U 98 ]
+[; ;newmain.c: 40: {
+"40
+{
+[; ;newmain.c: 41: PORTA=0x00;
+"41
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;newmain.c: 42: PORTD=element(tim_min%10);
+"42
+[e = _PORTD ( _element (1 -> % -> _tim_min `i -> 10 `i `uc ]
+[; ;newmain.c: 43: PORTA=0x01;
+"43
+[e = _PORTA -> -> 1 `i `uc ]
+[; ;newmain.c: 44: _delay((unsigned long)((10)*(20000000/4000.0)));
+"44
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;newmain.c: 45: PORTA=0x00;
+"45
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;newmain.c: 46: PORTD=element(tim_min/10);
+"46
+[e = _PORTD ( _element (1 -> / -> _tim_min `i -> 10 `i `uc ]
+[; ;newmain.c: 47: PORTA=0x02;
+"47
+[e = _PORTA -> -> 2 `i `uc ]
+[; ;newmain.c: 48: _delay((unsigned long)((10)*(20000000/4000.0)));
+"48
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;newmain.c: 49: PORTA=0x00;
+"49
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;newmain.c: 50: PORTD=(element(tim_hr%10)&0x7f);
+"50
+[e = _PORTD -> & -> ( _element (1 -> % -> _tim_hr `i -> 10 `i `uc `i -> 127 `i `uc ]
+[; ;newmain.c: 51: PORTA=0x04;
+"51
+[e = _PORTA -> -> 4 `i `uc ]
+[; ;newmain.c: 52: _delay((unsigned long)((10)*(20000000/4000.0)));
+"52
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;newmain.c: 53: PORTA=0x00;
+"53
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;newmain.c: 54: PORTD=element(tim_hr/10);
+"54
+[e = _PORTD ( _element (1 -> / -> _tim_hr `i -> 10 `i `uc ]
+[; ;newmain.c: 55: PORTA=0x08;
+"55
+[e = _PORTA -> -> 8 `i `uc ]
+[; ;newmain.c: 56: _delay((unsigned long)((10)*(20000000/4000.0)));
+"56
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;newmain.c: 58: if(PORTBbits.RB1==0)
+"58
+[e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 100  ]
+[; ;newmain.c: 59: {
+"59
+{
+[; ;newmain.c: 60: tim_min++;
+"60
+[e ++ _tim_min -> -> 1 `i `uc ]
+"61
+}
+[e :U 100 ]
+[; ;newmain.c: 61: }
+[; ;newmain.c: 63: if(PORTBbits.RB2==0)
+"63
+[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 101  ]
+[; ;newmain.c: 64: {
+"64
+{
+[; ;newmain.c: 65: tim_hr++;
+"65
+[e ++ _tim_hr -> -> 1 `i `uc ]
+"66
+}
+[e :U 101 ]
+"68
+}
 [e :U 97 ]
+"39
 [e $U 98  ]
 [e :U 99 ]
-[; ;newmain.c: 35: return 0;
-"35
+[; ;newmain.c: 66: }
+[; ;newmain.c: 68: }
+[; ;newmain.c: 69: return 0;
+"69
 [e ) -> 0 `i ]
 [e $UE 96  ]
-[; ;newmain.c: 36: }
-"36
+[; ;newmain.c: 70: }
+"70
 [e :UE 96 ]
 }
-"38
+"72
 [v _InitTimer1 `(v ~T0 @X0 1 ef ]
-"39
+"73
 {
-[; ;newmain.c: 38: void InitTimer1(void)
-[; ;newmain.c: 39: {
+[; ;newmain.c: 72: void InitTimer1(void)
+[; ;newmain.c: 73: {
 [e :U _InitTimer1 ]
 [f ]
-[; ;newmain.c: 40: T1CONbits.T1CKPS0=1;
-"40
+[; ;newmain.c: 74: T1CONbits.T1CKPS0=1;
+"74
 [e = . . _T1CONbits 1 3 -> -> 1 `i `uc ]
-[; ;newmain.c: 41: T1CONbits.T1CKPS1=0;
-"41
-[e = . . _T1CONbits 1 4 -> -> 0 `i `uc ]
-[; ;newmain.c: 42: T1CONbits.T1OSCEN=1;
-"42
+[; ;newmain.c: 75: T1CONbits.T1CKPS1=1;
+"75
+[e = . . _T1CONbits 1 4 -> -> 1 `i `uc ]
+[; ;newmain.c: 76: T1CONbits.T1OSCEN=1;
+"76
 [e = . . _T1CONbits 0 3 -> -> 1 `i `uc ]
-[; ;newmain.c: 43: PIE1bits.TMR1IE=1;
-"43
+[; ;newmain.c: 77: PIE1bits.TMR1IE=1;
+"77
 [e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-[; ;newmain.c: 44: T1CONbits.TMR1ON=1;
-"44
+[; ;newmain.c: 78: T1CONbits.TMR1ON=1;
+"78
 [e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-[; ;newmain.c: 45: }
-"45
-[e :UE 100 ]
+[; ;newmain.c: 79: }
+"79
+[e :UE 102 ]
 }
-[v F1099 `(v ~T0 @X0 1 tf ]
-"47
-[v _ISR `IF1099 ~T0 @X0 1 e ]
-"48
+[v F1101 `(v ~T0 @X0 1 tf ]
+"81
+[v _ISR `IF1101 ~T0 @X0 1 e ]
+"82
 {
-[; ;newmain.c: 47: void interrupt ISR(void)
-[; ;newmain.c: 48: {
+[; ;newmain.c: 81: void interrupt ISR(void)
+[; ;newmain.c: 82: {
 [e :U _ISR ]
 [f ]
-[; ;newmain.c: 49: if (PIR1bits.TMR1IF==1)
-"49
-[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 102  ]
-[; ;newmain.c: 50: {
-"50
+"83
+[v F1113 `uc ~T0 @X0 1 s tim_cnt ]
+[i F1113
+-> -> 0 `i `uc
+]
+[; ;newmain.c: 83: static char tim_cnt=0;
+[; ;newmain.c: 84: if (PIR1bits.TMR1IF==1)
+"84
+[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 104  ]
+[; ;newmain.c: 85: {
+"85
 {
-[; ;newmain.c: 52: PORTD ^= PORTD;
-"52
-[e =^ _PORTD _PORTD ]
-[; ;newmain.c: 53: PORTDbits.RD0 ^= PORTDbits.RD0;
-"53
-[e =^ . . _PORTDbits 0 0 . . _PORTDbits 0 0 ]
-[; ;newmain.c: 55: TMR1=0xffff;
-"55
-[e = _TMR1 -> -> 65535 `ui `us ]
-[; ;newmain.c: 56: PIR1bits.TMR1IF=0;
-"56
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-[; ;newmain.c: 57: T1CONbits.TMR1ON=1;
-"57
-[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"58
+[; ;newmain.c: 86: tim_cnt++;
+"86
+[e ++ F1113 -> -> 1 `i `uc ]
+[; ;newmain.c: 87: if(tim_cnt==0x0a)
+"87
+[e $ ! == -> F1113 `i -> 10 `i 105  ]
+[; ;newmain.c: 88: {
+"88
+{
+[; ;newmain.c: 89: tim_sec++;
+"89
+[e ++ _tim_sec -> -> 1 `i `uc ]
+[; ;newmain.c: 90: PORTD = ~PORTD;
+"90
+[e = _PORTD -> ~ -> _PORTD `i `uc ]
+[; ;newmain.c: 91: tim_cnt=0;
+"91
+[e = F1113 -> -> 0 `i `uc ]
+"92
 }
-[e :U 102 ]
-[; ;newmain.c: 58: }
-[; ;newmain.c: 65: }
-"65
-[e :UE 101 ]
+[e :U 105 ]
+[; ;newmain.c: 92: }
+[; ;newmain.c: 93: if(tim_sec>=60)
+"93
+[e $ ! >= -> _tim_sec `i -> 60 `i 106  ]
+[; ;newmain.c: 94: {
+"94
+{
+[; ;newmain.c: 95: tim_min++;
+"95
+[e ++ _tim_min -> -> 1 `i `uc ]
+[; ;newmain.c: 96: tim_sec=0;
+"96
+[e = _tim_sec -> -> 0 `i `uc ]
+"97
+}
+[e :U 106 ]
+[; ;newmain.c: 97: }
+[; ;newmain.c: 98: if(tim_min>=60)
+"98
+[e $ ! >= -> _tim_min `i -> 60 `i 107  ]
+[; ;newmain.c: 99: {
+"99
+{
+[; ;newmain.c: 100: tim_hr++;
+"100
+[e ++ _tim_hr -> -> 1 `i `uc ]
+[; ;newmain.c: 101: tim_min=0;
+"101
+[e = _tim_min -> -> 0 `i `uc ]
+[; ;newmain.c: 102: tim_sec=0;
+"102
+[e = _tim_sec -> -> 0 `i `uc ]
+"103
+}
+[e :U 107 ]
+[; ;newmain.c: 103: }
+[; ;newmain.c: 104: if(tim_hr>=60)
+"104
+[e $ ! >= -> _tim_hr `i -> 60 `i 108  ]
+[; ;newmain.c: 105: {
+"105
+{
+[; ;newmain.c: 106: tim_sec=0;
+"106
+[e = _tim_sec -> -> 0 `i `uc ]
+[; ;newmain.c: 107: tim_min=0;
+"107
+[e = _tim_min -> -> 0 `i `uc ]
+[; ;newmain.c: 108: tim_hr=0;
+"108
+[e = _tim_hr -> -> 0 `i `uc ]
+"109
+}
+[e :U 108 ]
+[; ;newmain.c: 109: }
+[; ;newmain.c: 110: TMR1=0x0bdb;
+"110
+[e = _TMR1 -> -> 3035 `i `us ]
+[; ;newmain.c: 111: PIR1bits.TMR1IF=0;
+"111
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[; ;newmain.c: 112: T1CONbits.TMR1ON=1;
+"112
+[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
+"113
+}
+[e :U 104 ]
+[; ;newmain.c: 113: }
+[; ;newmain.c: 114: }
+"114
+[e :UE 103 ]
+}
+"116
+[v _element `(uc ~T0 @X0 1 ef1`uc ]
+"117
+{
+[; ;newmain.c: 116: char element(char num)
+[; ;newmain.c: 117: {
+[e :U _element ]
+"116
+[v _num `uc ~T0 @X0 1 r1 ]
+"117
+[f ]
+[; ;newmain.c: 118: switch (num)
+"118
+[e $U 111  ]
+[; ;newmain.c: 119: {
+"119
+{
+[; ;newmain.c: 120: case 0:
+"120
+[e :U 112 ]
+[; ;newmain.c: 121: return 0xc0;
+"121
+[e ) -> -> 192 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 123: case 1:
+"123
+[e :U 113 ]
+[; ;newmain.c: 124: return 0xf9;
+"124
+[e ) -> -> 249 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 126: case 2:
+"126
+[e :U 114 ]
+[; ;newmain.c: 127: return 0xa4;
+"127
+[e ) -> -> 164 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 129: case 3:
+"129
+[e :U 115 ]
+[; ;newmain.c: 130: return 0xb0;
+"130
+[e ) -> -> 176 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 132: case 4:
+"132
+[e :U 116 ]
+[; ;newmain.c: 133: return 0x99;
+"133
+[e ) -> -> 153 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 135: case 5:
+"135
+[e :U 117 ]
+[; ;newmain.c: 136: return 0x92;
+"136
+[e ) -> -> 146 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 138: case 6:
+"138
+[e :U 118 ]
+[; ;newmain.c: 139: return 0x82;
+"139
+[e ) -> -> 130 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 141: case 7:
+"141
+[e :U 119 ]
+[; ;newmain.c: 142: return 0xf8;
+"142
+[e ) -> -> 248 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 144: case 8:
+"144
+[e :U 120 ]
+[; ;newmain.c: 145: return 0x80;
+"145
+[e ) -> -> 128 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 147: case 9:
+"147
+[e :U 121 ]
+[; ;newmain.c: 148: return 0x98;
+"148
+[e ) -> -> 152 `i `uc ]
+[e $UE 109  ]
+[; ;newmain.c: 150: default:
+"150
+[e :U 122 ]
+[; ;newmain.c: 151: return 0xbf;
+"151
+[e ) -> -> 191 `i `uc ]
+[e $UE 109  ]
+"153
+}
+[; ;newmain.c: 153: }
+[e $U 110  ]
+"118
+[e :U 111 ]
+[e [\ _num , $ -> -> 0 `i `uc 112
+ , $ -> -> 1 `i `uc 113
+ , $ -> -> 2 `i `uc 114
+ , $ -> -> 3 `i `uc 115
+ , $ -> -> 4 `i `uc 116
+ , $ -> -> 5 `i `uc 117
+ , $ -> -> 6 `i `uc 118
+ , $ -> -> 7 `i `uc 119
+ , $ -> -> 8 `i `uc 120
+ , $ -> -> 9 `i `uc 121
+ 122 ]
+"153
+[e :U 110 ]
+[; ;newmain.c: 154: }
+"154
+[e :UE 109 ]
 }
