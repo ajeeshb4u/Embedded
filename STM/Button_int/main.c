@@ -1,12 +1,25 @@
 #include "main.h"
 
-__IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
+/** @addtogroup TIM_TimeBase
+  * @{
+  */
 
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* TIM handle declaration */
+TIM_HandleTypeDef    TimHandle;
+uint32_t int_no=0;
+
+__IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
+__IO uint32_t uwPrescalerValue = 0;  /* Prescaler for tomer */
 
 void SystemClock_Config(void);
 void	GENLED_Init(void);
 void startup_led(void);
 void	Button_Init(void);
+static void Error_Handler(void);
 
 int main(void)
 {
@@ -30,6 +43,61 @@ int main(void)
 	GENLED_Init();
 	startup_led();
 	
+  /*##-1- Configure the TIM peripheral #######################################*/
+  /* -----------------------------------------------------------------------
+    In this example TIM3 input clock (TIM3CLK)  is set to APB1 clock (PCLK1) x2,
+    since APB1 prescaler is set to 4 (0x100).
+       TIM3CLK = PCLK1*2
+       PCLK1   = HCLK/2
+    => TIM3CLK = PCLK1*2 = (HCLK/2)*2 = HCLK = SystemCoreClock
+    To get TIM3 counter clock at 10 KHz, the Prescaler is computed as following:
+    Prescaler = (TIM3CLK / TIM3 counter clock) - 1
+    Prescaler = (SystemCoreClock /10 KHz) - 1
+
+    Note:
+     SystemCoreClock variable holds HCLK frequency and is defined in system_stm32f1xx.c file.
+     Each time the core clock (HCLK) changes, user had to update SystemCoreClock
+     variable value. Otherwise, any configuration based on this variable will be incorrect.
+     This variable is updated in three ways:
+      1) by calling CMSIS function SystemCoreClockUpdate()
+      2) by calling HAL API function HAL_RCC_GetSysClockFreq()
+      3) each time HAL_RCC_ClockConfig() is called to configure the system clock frequency
+  ----------------------------------------------------------------------- */
+
+  /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
+//   uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
+uwPrescalerValue = 36000;//38461;
+
+  /* Set TIMx instance */
+  TimHandle.Instance = TIMx;
+
+  /* Initialize TIMx peripheral as follows:
+       + Period = 10000 - 1
+       + Prescaler = (SystemCoreClock/10000) - 1
+       + ClockDivision = 0
+       + Counter direction = Up
+  */
+  TimHandle.Init.Period            = 2000;
+  TimHandle.Init.Prescaler         = uwPrescalerValue;
+  TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+  TimHandle.Init.RepetitionCounter = 0;
+
+  if (HAL_TIM_Base_Init(&TimHandle) != HAL_OK)
+  {
+    /* Initialization Error */
+    Error_Handler();
+  }
+
+  /*##-2- Start the TIM Base generation in interrupt mode ####################*/
+  /* Start Channel1 */
+  if (HAL_TIM_Base_Start_IT(&TimHandle) != HAL_OK)
+  {
+    /* Starting Error */
+    Error_Handler();
+  }
+
+
 /*configure PC13 as LED*/
 	Button_Init();
 	UserButtonStatus=0;
@@ -182,4 +250,21 @@ void startup_led(void)
 		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
 		HAL_Delay(100);
 
+}
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @param  None
+  * @retval None
+  */
+static void Error_Handler(void)
+{
+  while (1);
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+//  while(1);
+ 	int_no++;
+	HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 }

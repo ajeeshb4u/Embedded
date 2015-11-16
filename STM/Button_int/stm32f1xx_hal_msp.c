@@ -1,22 +1,10 @@
 /**
   ******************************************************************************
-  * @file    stm32f1xx_hal_msp_template.c
+  * @file    TIM/TIM_TimeBase/Src/stm32f1xx_hal_msp.c
   * @author  MCD Application Team
   * @version V1.0.0
-  * @date    15-December-2014
-  * @brief   HAL BSP module.
-  *          This file template is located in the HAL folder and should be copied 
-  *          to the user folder.
-  *         
-  @verbatim
- ===============================================================================
-                     ##### How to use this driver #####
- ===============================================================================
-    [..]
-    This file is generated automatically by MicroXplorer and eventually modified 
-    by the user
-
-  @endverbatim
+  * @date    17-December-2014
+  * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
   *
@@ -44,17 +32,17 @@
   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
-  ******************************************************************************  
-  */ 
+  ******************************************************************************
+  */
 
 /* Includes ------------------------------------------------------------------*/
-//#include "stm32f1xx_hal.h"
 #include "main.h"
-/** @addtogroup STM32F1xx_HAL_Driver
+//#include "stm32f1xx_hal_tim.h"
+/** @addtogroup STM32F1xx_HAL_Examples
   * @{
   */
 
-/** @defgroup HAL_MSP HAL_MSP
+/** @defgroup HAL_MSP
   * @brief HAL MSP module.
   * @{
   */
@@ -66,65 +54,10 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-/** @defgroup HAL_MSP_Exported_Functions HAL MSP Exported Functions
+/** @defgroup HAL_MSP_Private_Functions
   * @{
   */
 
-/**
-  * @brief  Initializes the Global MSP.
-  * @retval None
-  */
-void HAL_MspInit(void)
-{
-  /* NOTE : This function is generated automatically by MicroXplorer and eventually  
-            modified by the user
-   */ 
-}
-
-/**
-  * @brief  DeInitializes the Global MSP.
-  * @retval None
-  */
-void HAL_MspDeInit(void)
-{
-  /* NOTE : This function is generated automatically by MicroXplorer and eventually  
-            modified by the user
-   */
-}
-
-/**
-  * @brief  Initializes the PPP MSP.
-  * @retval None
-  */
-void HAL_PPP_MspInit(void)
-{
-  /* NOTE : This function is generated automatically by MicroXplorer and eventually  
-            modified by the user
-   */ 
-}
-
-/**
-  * @brief  DeInitializes the PPP MSP.
-  * @retval None
-  */
-void HAL_PPP_MspDeInit(void)
-{
-  /* NOTE : This function is generated automatically by MicroXplorer and eventually  
-            modified by the user
-   */
-}
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /**
   * @brief TIM MSP Initialization
@@ -134,23 +67,30 @@ void HAL_PPP_MspDeInit(void)
   * @retval None
   */
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
- {
+{
   /*##-1- Enable peripheral clock #################################*/
   /* TIMx Peripheral clock enable */
- TIMx_CLK_ENABLE();
+  TIMx_CLK_ENABLE();
   
   /*##-2- Configure the NVIC for TIMx ########################################*/
   /* Set the TIMx priority */
- HAL_NVIC_SetPriority(TIMx_IRQn, 3, 0);
+  HAL_NVIC_SetPriority(TIMx_IRQn, 3, 0);
 
   /* Enable the TIMx global Interrupt */
- HAL_NVIC_EnableIRQ(TIMx_IRQn);
- }
+  HAL_NVIC_EnableIRQ(TIMx_IRQn);
+}
 
 
 /**
   * @}
   */
 
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
