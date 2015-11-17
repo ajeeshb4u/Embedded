@@ -10,10 +10,18 @@
 /* Private variables ---------------------------------------------------------*/
 /* TIM handle declaration */
 TIM_HandleTypeDef    TimHandle;
-uint32_t int_no=0;
+UART_HandleTypeDef UartHandle;
 
+__IO ITStatus UartReady = RESET;
 __IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
 __IO uint32_t uwPrescalerValue = 0;  /* Prescaler for tomer */
+__IO uint32_t int_no=0;
+
+/* Buffer used for transmission */
+uint8_t aTxBuffer[] = " ****UART_TwoBoards_ComIT****  ****UART_TwoBoards_ComIT****  ****UART_TwoBoards_ComIT**** ";
+
+/* Buffer used for reception */
+uint8_t aRxBuffer[RXBUFFERSIZE];
 
 void SystemClock_Config(void);
 void	GENLED_Init(void);
@@ -42,7 +50,32 @@ int main(void)
 /*configure PC13 as LED*/
 	GENLED_Init();
 	startup_led();
-	
+
+	  /*##-1- Configure the UART peripheral ######################################*/
+  /* Put the USART peripheral in the Asynchronous mode (UART Mode) */
+  /* UART configured as follows:
+      - Word Length = 8 Bits
+      - Stop Bit = One Stop bit
+      - Parity = None
+      - BaudRate = 9600 baud
+      - Hardware flow control disabled (RTS and CTS signals) */
+  UartHandle.Instance        = USARTx;
+
+  UartHandle.Init.BaudRate   = 9600;
+  UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
+  UartHandle.Init.StopBits   = UART_STOPBITS_1;
+  UartHandle.Init.Parity     = UART_PARITY_NONE;
+  UartHandle.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
+  UartHandle.Init.Mode       = UART_MODE_TX_RX;
+  if(HAL_UART_DeInit(&UartHandle) != HAL_OK)
+  {
+    Error_Handler();
+  }  
+  if(HAL_UART_Init(&UartHandle) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
   /*##-1- Configure the TIM peripheral #######################################*/
   /* -----------------------------------------------------------------------
     In this example TIM3 input clock (TIM3CLK)  is set to APB1 clock (PCLK1) x2,
@@ -66,7 +99,7 @@ int main(void)
 
   /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
 //   uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
-uwPrescalerValue = 36000;//38461;
+uwPrescalerValue = 36000;	/* For 1 sec cnt = 72000000 */
 
   /* Set TIMx instance */
   TimHandle.Instance = TIMx;
@@ -97,25 +130,10 @@ uwPrescalerValue = 36000;//38461;
     Error_Handler();
   }
 
-
 /*configure PC13 as LED*/
 	Button_Init();
 	UserButtonStatus=0;
-	while(1)
-	{
-		while(UserButtonStatus == 1)
-		{
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
-		HAL_Delay(500);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
-		HAL_Delay(500);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
-		HAL_Delay(500);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
-		HAL_Delay(500);
-		UserButtonStatus=0;
-		}
-	}
+	while(1);
 }
 
 /**
@@ -210,44 +228,45 @@ void	Button_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == Button_PIN)
-  {  
-    UserButtonStatus = 1;
+  {
+	startup_led();		
+//     UserButtonStatus = 1;
   }
 }
 
 void startup_led(void)
 {
-			HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_WritePin(GENLED_GPIO_PORT, GENLED_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
 
 }
@@ -259,12 +278,45 @@ void startup_led(void)
   */
 static void Error_Handler(void)
 {
-  while (1);
+	NVIC_SystemReset();
+//  while (1);
 }
+
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 //  while(1);
  	int_no++;
 	HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
+  /*##-2- Start the transmission process #####################################*/  
+  /* While the UART in reception process, user can transmit data through 
+     "aTxBuffer" buffer */
+  if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
+  {
+    Error_Handler();
+  }
+  
+  /*##-3- Wait for the end of the transfer ###################################*/   
+  while (UartReady != SET)
+  {
+  }
+  
+  /* Reset transmission flag */
+  UartReady = RESET;
+	
+}
+
+/**
+  * @brief  Tx Transfer completed callback
+  * @param  UartHandle: UART handle. 
+  * @note   This example shows a simple way to report end of IT Tx transfer, and 
+  *         you can add your own implementation. 
+  * @retval None
+  */
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
+{
+  /* Set transmission flag: transfer complete */
+  UartReady = SET;
+
+  
 }

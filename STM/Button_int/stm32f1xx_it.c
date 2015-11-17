@@ -56,7 +56,7 @@
 /* SPI handler declared in "main.c" file */
 //extern SPI_HandleTypeDef SpiHandle;
 extern TIM_HandleTypeDef    TimHandle;
-
+extern UART_HandleTypeDef UartHandle;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -168,6 +168,18 @@ void SysTick_Handler1(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f1xx.s).                                               */
 /******************************************************************************/
+/**
+  * @brief  This function handles UART interrupt request.  
+  * @param  None
+  * @retval None
+  * @Note   This function is redefined in "main.h" and related to DMA  
+  *         used for USART data transmission     
+  */
+void USARTx_IRQHandler(void)
+{
+  HAL_UART_IRQHandler(&UartHandle);
+}
+
 
 /**
   * @brief  This function handles TIM interrupt request.

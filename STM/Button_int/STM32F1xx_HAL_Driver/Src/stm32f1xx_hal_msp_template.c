@@ -49,7 +49,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 //#include "stm32f1xx_hal.h"
-#include "main.h"
+//#include "main.h"
 /** @addtogroup STM32F1xx_HAL_Driver
   * @{
   */
@@ -133,19 +133,19 @@ void HAL_PPP_MspDeInit(void)
   * @param htim: TIM handle pointer
   * @retval None
   */
-void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
- {
-  /*##-1- Enable peripheral clock #################################*/
-  /* TIMx Peripheral clock enable */
- TIMx_CLK_ENABLE();
-  
-  /*##-2- Configure the NVIC for TIMx ########################################*/
-  /* Set the TIMx priority */
- HAL_NVIC_SetPriority(TIMx_IRQn, 3, 0);
+// void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
+//  {
+//   /*##-1- Enable peripheral clock #################################*/
+//   /* TIMx Peripheral clock enable */
+//  TIMx_CLK_ENABLE();
+//   
+//   /*##-2- Configure the NVIC for TIMx ########################################*/
+//   /* Set the TIMx priority */
+//  HAL_NVIC_SetPriority(TIMx_IRQn, 0x0F, 1);
 
-  /* Enable the TIMx global Interrupt */
- HAL_NVIC_EnableIRQ(TIMx_IRQn);
- }
+//   /* Enable the TIMx global Interrupt */
+//  HAL_NVIC_EnableIRQ(TIMx_IRQn);
+//  }
 
 
 /**

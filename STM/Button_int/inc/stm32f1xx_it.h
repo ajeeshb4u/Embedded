@@ -60,6 +60,7 @@ void PendSV_Handler(void);
 void SysTick_Handler1(void);
 void SPIx_IRQHandler(void);
 void EXTI0_IRQHandler(void);
+void USARTx_IRQHandler(void);
 
 #ifdef __cplusplus
 }
