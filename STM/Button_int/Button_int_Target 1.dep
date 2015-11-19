@@ -8,7 +8,7 @@ I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB0F5AC)
 I (C:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x50597FB4)
 I (C:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x4FDAB784)
 I (.\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x564AADFC)
-F (.\main.c)(0x564AECC1)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "main.o" --omf_browse "main.crf" --depend "main.d")
+F (.\main.c)(0x564C63E5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "main.o" --omf_browse "main.crf" --depend "main.d")
 I (.\inc\main.h)(0x564AD103)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x564AAE00)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_conf.h)(0x564AB65F)

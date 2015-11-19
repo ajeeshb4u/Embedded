@@ -13,6 +13,8 @@ TIM_HandleTypeDef    TimHandle;
 UART_HandleTypeDef UartHandle;
 
 __IO ITStatus UartReady = RESET;
+__IO ITStatus RxReady = RESET;
+__IO ITStatus RxReadycmd = RESET;
 __IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
 __IO uint32_t uwPrescalerValue = 0;  /* Prescaler for tomer */
 __IO uint32_t int_no=0;
@@ -76,6 +78,12 @@ int main(void)
     Error_Handler();
   }
 
+/*##Put UART peripheral in reception process ###########################*/  
+  if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
   /*##-1- Configure the TIM peripheral #######################################*/
   /* -----------------------------------------------------------------------
     In this example TIM3 input clock (TIM3CLK)  is set to APB1 clock (PCLK1) x2,
@@ -130,10 +138,24 @@ uwPrescalerValue = 36000;	/* For 1 sec cnt = 72000000 */
     Error_Handler();
   }
 
+	
 /*configure PC13 as LED*/
 	Button_Init();
 	UserButtonStatus=0;
-	while(1);
+
+	while(1)
+	{
+		if (RxReady==SET)
+		{
+			while(1);
+			RxReady=RESET;
+// 			/*##Put UART peripheral in reception process ###########################*/  
+// 			if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
+// 			{
+// 				Error_Handler();
+// 			}
+		}
+	}
 }
 
 /**
@@ -248,27 +270,6 @@ void startup_led(void)
 		HAL_Delay(100);
 		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
 		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-		HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-		HAL_Delay(100);
-
 }
 
 /**
@@ -285,25 +286,20 @@ static void Error_Handler(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-//  while(1);
- 	int_no++;
 	HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
-  /*##-2- Start the transmission process #####################################*/  
+  /*##Start the transmission process #####################################*/  
   /* While the UART in reception process, user can transmit data through 
      "aTxBuffer" buffer */
   if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
   {
     Error_Handler();
   }
-  
-  /*##-3- Wait for the end of the transfer ###################################*/   
+  /*##Wait for the end of the transfer ###################################*/   
   while (UartReady != SET)
   {
   }
-  
   /* Reset transmission flag */
   UartReady = RESET;
-	
 }
 
 /**
@@ -317,6 +313,30 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
   /* Set transmission flag: transfer complete */
   UartReady = SET;
-
-  
 }
+
+/**
+  * @brief  Rx Transfer completed callback
+  * @param  UartHandle: UART handle
+  * @note   This example shows a simple way to report end of DMA Rx transfer, and 
+  *         you can add your own implementation.
+  * @retval None
+  */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
+{
+  /* Set transmission flag: transfer complete */
+  RxReady = SET;
+}
+
+/**
+  * @brief  UART error callbacks
+  * @param  UartHandle: UART handle
+  * @note   This example shows a simple way to report transfer error, and you can
+  *         add your own implementation.
+  * @retval None
+  */
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *UartHandle)
+{
+    Error_Handler();
+}
+
