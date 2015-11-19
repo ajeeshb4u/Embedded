@@ -20,10 +20,11 @@ __IO uint32_t uwPrescalerValue = 0;  /* Prescaler for tomer */
 __IO uint32_t int_no=0;
 
 /* Buffer used for transmission */
-uint8_t aTxBuffer[] = " ****UART_TwoBoards_ComIT****  ****UART_TwoBoards_ComIT****  ****UART_TwoBoards_ComIT**** ";
+uint8_t aTxBuffer[] = " ****UART_TwoBoards_ComIT**** ";
 
 /* Buffer used for reception */
-uint8_t aRxBuffer[RXBUFFERSIZE];
+uint8_t aRxBuffer[10];
+uint8_t aRxBuffer_cpy[10];
 
 void SystemClock_Config(void);
 void	GENLED_Init(void);
@@ -62,7 +63,6 @@ int main(void)
       - BaudRate = 9600 baud
       - Hardware flow control disabled (RTS and CTS signals) */
   UartHandle.Instance        = USARTx;
-
   UartHandle.Init.BaudRate   = 9600;
   UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
   UartHandle.Init.StopBits   = UART_STOPBITS_1;
@@ -145,16 +145,11 @@ uwPrescalerValue = 36000;	/* For 1 sec cnt = 72000000 */
 
 	while(1)
 	{
-		if (RxReady==SET)
-		{
-			while(1);
-			RxReady=RESET;
-// 			/*##Put UART peripheral in reception process ###########################*/  
-// 			if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
-// 			{
-// 				Error_Handler();
-// 			}
-		}
+// 		if (RxReady==SET)
+// 		{
+// 			
+// 			RxReady=RESET;
+// 		}
 	}
 }
 
@@ -174,7 +169,7 @@ uwPrescalerValue = 36000;	/* For 1 sec cnt = 72000000 */
   */
 void SystemClock_Config(void)
 {
- RCC_ClkInitTypeDef clkinitstruct = {0};
+	RCC_ClkInitTypeDef clkinitstruct = {0};
   RCC_OscInitTypeDef oscinitstruct = {0};
   /* Configure PLL ------------------------------------------------------*/
   /* PLL configuration: PLLCLK = (HSI / 2) * PLLMUL = (8 / 2) * 16 = 64 MHz */
@@ -252,7 +247,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   if(GPIO_Pin == Button_PIN)
   {
 	startup_led();		
-//     UserButtonStatus = 1;
   }
 }
 
@@ -324,6 +318,18 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
   */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
+	int i=0;
+/*##Put UART peripheral in reception process ###########################*/  
+  if(HAL_UART_Receive_IT(UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
+  {
+    Error_Handler();
+  }
+	for (i=0;i<10;i++)
+	{
+		aRxBuffer_cpy[i]=aRxBuffer[i];
+		aRxBuffer[i]=0;
+	}
+	
   /* Set transmission flag: transfer complete */
   RxReady = SET;
 }
