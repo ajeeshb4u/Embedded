@@ -8,7 +8,7 @@ I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB0F5AC)
 I (C:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x50597FB4)
 I (C:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x4FDAB784)
 I (.\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x564AADFC)
-F (.\main.c)(0x564D7F05)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "main.o" --omf_browse "main.crf" --depend "main.d")
+F (.\main.c)(0x565C2B19)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "main.o" --omf_browse "main.crf" --depend "main.d")
 I (.\inc\main.h)(0x564AD103)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x564AAE00)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_conf.h)(0x564AB65F)
@@ -737,7 +737,31 @@ I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h)(0x564AAE00)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x564ACCD9)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x564AAE00)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x564AAE00)
-F (.\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_msp_template.c)(0x564ACB5B)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "stm32f1xx_hal_msp_template.o" --omf_browse "stm32f1xx_hal_msp_template.crf" --depend "stm32f1xx_hal_msp_template.d")
+F (.\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_msp_template.c)(0x564D9AF5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "stm32f1xx_hal_msp_template.o" --omf_browse "stm32f1xx_hal_msp_template.crf" --depend "stm32f1xx_hal_msp_template.d")
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_conf.h)(0x564AB65F)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x564AAE00)
+I (.\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x564AADFC)
+I (.\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xb.h)(0x564AADFC)
+I (C:\Keil\ARM\CMSIS\Include\core_cm3.h)(0x50064CAA)
+I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB0F5AC)
+I (C:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x50597FB4)
+I (C:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x4FDAB784)
+I (.\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x564AADFC)
+I (.\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x564ACCD9)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x564AAE00)
+I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x564AAE00)
 F (.\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_nand.c)(0x564AAE00)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -o "stm32f1xx_hal_nand.o" --omf_browse "stm32f1xx_hal_nand.crf" --depend "stm32f1xx_hal_nand.d")
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x564AAE00)
 I (.\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_conf.h)(0x564AB65F)

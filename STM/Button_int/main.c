@@ -16,7 +16,7 @@ __IO ITStatus UartReady = RESET;
 __IO ITStatus RxReady = RESET;
 __IO ITStatus RxReadycmd = RESET;
 __IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
-__IO uint32_t uwPrescalerValue = 0;  /* Prescaler for tomer */
+__IO uint32_t uwPrescalerValue = 0;  /* Prescaler for timer */
 __IO uint32_t int_no=0;
 
 /* Buffer used for transmission */
@@ -107,7 +107,7 @@ int main(void)
 
   /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
 //   uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
-uwPrescalerValue = 36000;	/* For 1 sec cnt = 72000000 */
+uwPrescalerValue = 36000/2;	/* For 1 sec cnt = 72000000 */
 
   /* Set TIMx instance */
   TimHandle.Instance = TIMx;
@@ -143,14 +143,7 @@ uwPrescalerValue = 36000;	/* For 1 sec cnt = 72000000 */
 	Button_Init();
 	UserButtonStatus=0;
 
-	while(1)
-	{
-// 		if (RxReady==SET)
-// 		{
-// 			
-// 			RxReady=RESET;
-// 		}
-	}
+	while(1);
 }
 
 /**
@@ -329,7 +322,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
 		aRxBuffer_cpy[i]=aRxBuffer[i];
 		aRxBuffer[i]=0;
 	}
-	
   /* Set transmission flag: transfer complete */
   RxReady = SET;
 }
