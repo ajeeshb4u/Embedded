@@ -6,6 +6,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+enum {
+	TRANSFER_WAIT,
+	TRANSFER_COMPLETE,
+	TRANSFER_ERROR
+};
+
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* TIM handle declaration */
@@ -14,23 +20,30 @@ UART_HandleTypeDef UartHandle;
 
 __IO ITStatus UartReady = RESET;
 __IO ITStatus RxReady = RESET;
-__IO ITStatus RxReadycmd = RESET;
-__IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
 __IO uint32_t uwPrescalerValue = 0;  /* Prescaler for timer */
-__IO uint32_t int_no=0;
 
-/* Buffer used for transmission */
-uint8_t aTxBuffer[] = " ****UART_TwoBoards_ComIT**** ";
 
-/* Buffer used for reception */
+
+/* Buffer used for UART transmission */
+uint8_t aTxBuffer[] = "**UART_TwoBoards_ComIT**";
+
+/* Buffer used for UART reception */
 uint8_t aRxBuffer[10];
-uint8_t aRxBuffer_cpy[10];
+//uint8_t aRxBuffer_cpy[10];
 
-void SystemClock_Config(void);
-void	GENLED_Init(void);
-void startup_led(void);
-void	Button_Init(void);
-static void Error_Handler(void);
+	
+void SystemClock_Config(void);		/* Init clock */
+static void Error_Handler(void);	/* Error Reset */
+void startup_led(void);						/* Startup sequence */
+
+void	GENLED_Init(void);					/* General status Led pin config*/
+void	DRDY_Init(void);						/* Button Interrupt Init */
+void	CS_Config(void);						/* Chip Select Init */
+void	START_Config(void);					/* Continous Data read init*/
+void	RESET_Config(void);					/* ADS Reset Init */
+void	CLKSEL_Config(void);				/* ADS Clock select init */
+void ADS_RESET(void);							/* RESET or Initialize the ADS parameter pins */
+
 
 int main(void)
 {
@@ -48,11 +61,18 @@ int main(void)
 
 /*Configure the clock*/	
 	SystemClock_Config();	
-	HAL_Delay(10);
+//	HAL_Delay(10);
 	
 /*configure PC13 as LED*/
 	GENLED_Init();
 	startup_led();
+	DRDY_Init();
+	CS_Config();
+	START_Config();
+	RESET_Config();
+	CLKSEL_Config();
+	
+	ADS_RESET();
 
 	  /*##-1- Configure the UART peripheral ######################################*/
   /* Put the USART peripheral in the Asynchronous mode (UART Mode) */
@@ -63,7 +83,7 @@ int main(void)
       - BaudRate = 9600 baud
       - Hardware flow control disabled (RTS and CTS signals) */
   UartHandle.Instance        = USARTx;
-  UartHandle.Init.BaudRate   = 9600;
+  UartHandle.Init.BaudRate   = 115200/*230400*/;
   UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
   UartHandle.Init.StopBits   = UART_STOPBITS_1;
   UartHandle.Init.Parity     = UART_PARITY_NONE;
@@ -107,7 +127,7 @@ int main(void)
 
   /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
 //   uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
-uwPrescalerValue = 36000/2;	/* For 1 sec cnt = 72000000 */
+uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
 
   /* Set TIMx instance */
   TimHandle.Instance = TIMx;
@@ -118,7 +138,7 @@ uwPrescalerValue = 36000/2;	/* For 1 sec cnt = 72000000 */
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 2000;
+  TimHandle.Init.Period            = 10;
   TimHandle.Init.Prescaler         = uwPrescalerValue;
   TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
@@ -138,12 +158,9 @@ uwPrescalerValue = 36000/2;	/* For 1 sec cnt = 72000000 */
     Error_Handler();
   }
 
-	
-/*configure PC13 as LED*/
-	Button_Init();
-	UserButtonStatus=0;
-
-	while(1);
+	while(1)
+	{
+	}
 }
 
 /**
@@ -201,9 +218,9 @@ void SystemClock_Config(void)
 void	GENLED_Init(void)
 {
 	static GPIO_InitTypeDef GENLED_InitStruct;
-/* -1- Enable DRDY(PA2) Clock (to be able to program the configuration registers) */
+/* -1- Enable GENLED(Pc13) Clock */
     GENLED_GPIO_CLK_ENABLE();
-/* Configure Button pin as input */
+/* Configure GENLED pin as output */
     GENLED_InitStruct.Pin    = GENLED_PIN;
     GENLED_InitStruct.Mode   = GPIO_MODE_OUTPUT_PP;
     GENLED_InitStruct.Pull   = GPIO_PULLUP;
@@ -212,22 +229,24 @@ void	GENLED_Init(void)
 }
 
 
-void	Button_Init(void)
+void	DRDY_Init(void)
 {
-	static GPIO_InitTypeDef Button_InitStruct;
-/* -1- Enable DRDY(PA2) Clock (to be able to program the configuration registers) */
-    Button_GPIO_CLK_ENABLE();
-/* Configure Button pin as input */
-    Button_InitStruct.Pin    = Button_PIN;
-    Button_InitStruct.Mode   = GPIO_MODE_IT_FALLING;
-    Button_InitStruct.Pull   = GPIO_PULLUP;
-    Button_InitStruct.Speed  = GPIO_SPEED_MEDIUM;
-    HAL_GPIO_Init(Button_GPIO_PORT, &Button_InitStruct);
-/* Enable and set Button EXTI Interrupt to the lowest priority */
+	static GPIO_InitTypeDef  DRDY_InitStruct;
+
+/* -1- Enable DRDY(PA0) Clock (to be able to program the configuration registers) */
+    DRDY_GPIO_CLK_ENABLE();
+/* Configure DRDY pin as input */
+    DRDY_InitStruct.Pin    = DRDY_PIN;
+    DRDY_InitStruct.Mode   = GPIO_MODE_IT_FALLING;
+    DRDY_InitStruct.Pull   = GPIO_PULLUP;
+    DRDY_InitStruct.Speed  = GPIO_SPEED_MEDIUM;
+    HAL_GPIO_Init(DRDY_GPIO_PORT, &DRDY_InitStruct);
+
+	/* Enable and set DRDY EXTI Interrupt to the lowest priority */
     HAL_NVIC_SetPriority((IRQn_Type)(EXTI0_IRQn), 0x0F, 0);
     HAL_NVIC_EnableIRQ((IRQn_Type)(EXTI0_IRQn));
-}
 
+}
 
 
 /**
@@ -237,9 +256,10 @@ void	Button_Init(void)
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  if(GPIO_Pin == Button_PIN)
+  if(GPIO_Pin == DRDY_PIN)
   {
-	startup_led();		
+	startup_led();	
+//HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);		
   }
 }
 
@@ -273,7 +293,7 @@ static void Error_Handler(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);
+//		HAL_GPIO_TogglePin(CLKSEL_GPIO_PORT, CLKSEL_PIN);
   /*##Start the transmission process #####################################*/  
   /* While the UART in reception process, user can transmit data through 
      "aTxBuffer" buffer */
@@ -311,17 +331,17 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
   */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
-	int i=0;
+//	int i=0;
 /*##Put UART peripheral in reception process ###########################*/  
   if(HAL_UART_Receive_IT(UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
   {
     Error_Handler();
   }
-	for (i=0;i<10;i++)
-	{
-		aRxBuffer_cpy[i]=aRxBuffer[i];
-		aRxBuffer[i]=0;
-	}
+// 	for (i=0;i<10;i++)
+// 	{
+// 		aRxBuffer_cpy[i]=aRxBuffer[i];
+// 		aRxBuffer[i]=0;
+// 	}
   /* Set transmission flag: transfer complete */
   RxReady = SET;
 }
@@ -338,3 +358,74 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *UartHandle)
     Error_Handler();
 }
 
+void	CS_Config(void)
+{
+	static GPIO_InitTypeDef CS_InitStruct;
+
+/* -1- Enable DRDY(PA2) Clock (to be able to program the configuration registers) */
+    CS_GPIO_CLK_ENABLE();
+/* Configure Button pin as input */
+    CS_InitStruct.Pin    = CS_PIN;
+    CS_InitStruct.Mode   = GPIO_MODE_OUTPUT_PP;
+    CS_InitStruct.Pull   = GPIO_PULLUP;
+    CS_InitStruct.Speed  = GPIO_SPEED_HIGH;
+  
+    HAL_GPIO_Init(CS_GPIO_PORT, &CS_InitStruct);
+}
+
+void	START_Config(void)
+{
+	static GPIO_InitTypeDef START_InitStruct;
+
+/* -1- Enable DRDY(PA2) Clock (to be able to program the configuration registers) */
+    START_GPIO_CLK_ENABLE();
+/* Configure Button pin as input */
+    START_InitStruct.Pin    = START_PIN;
+    START_InitStruct.Mode   = GPIO_MODE_OUTPUT_PP;
+    START_InitStruct.Pull   = GPIO_PULLUP;
+    START_InitStruct.Speed  = GPIO_SPEED_HIGH;
+  
+    HAL_GPIO_Init(START_GPIO_PORT, &START_InitStruct);
+}
+
+void	RESET_Config(void)
+{
+	static GPIO_InitTypeDef RESET_InitStruct;
+
+/* -1- Enable DRDY(PA2) Clock (to be able to program the configuration registers) */
+    RESET_GPIO_CLK_ENABLE();
+/* Configure Button pin as input */
+    RESET_InitStruct.Pin    = RESET_PIN;
+    RESET_InitStruct.Mode   = GPIO_MODE_OUTPUT_PP;
+    RESET_InitStruct.Pull   = GPIO_PULLUP;
+    RESET_InitStruct.Speed  = GPIO_SPEED_HIGH;
+  
+    HAL_GPIO_Init(RESET_GPIO_PORT, &RESET_InitStruct);
+}
+
+void	CLKSEL_Config(void)
+{
+	static GPIO_InitTypeDef CLKSEL_InitStruct;
+
+/* -1- Enable DRDY(PA2) Clock (to be able to program the configuration registers) */
+    CLKSEL_GPIO_CLK_ENABLE();
+/* Configure Button pin as input */
+    CLKSEL_InitStruct.Pin    = CLKSEL_PIN;
+    CLKSEL_InitStruct.Mode   = GPIO_MODE_OUTPUT_PP;
+    CLKSEL_InitStruct.Pull   = GPIO_PULLUP;
+    CLKSEL_InitStruct.Speed  = GPIO_SPEED_HIGH;
+  
+    HAL_GPIO_Init(CLKSEL_GPIO_PORT, &CLKSEL_InitStruct);
+}
+
+void ADS_RESET(void)
+{
+	HAL_GPIO_WritePin(RESET_GPIO_PORT, RESET_PIN, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(RESET_GPIO_PORT, RESET_PIN, GPIO_PIN_SET);
+	HAL_Delay(10);
+	
+	HAL_GPIO_WritePin(CS_GPIO_PORT, CS_PIN, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(CLKSEL_GPIO_PORT, CLKSEL_PIN, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(START_GPIO_PORT, START_PIN, GPIO_PIN_SET);
+}

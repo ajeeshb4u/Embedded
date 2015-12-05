@@ -19,23 +19,6 @@
 
 #define GENLEDx_GPIO_CLK_DISABLE(__INDEX__) GENLED_GPIO_CLK_DISABLE())
 
-/**
-  * @}
-  */ 
-
-/** @defgroup General Led Constants
-  * @{
-  */
-#define Buttonn                             1
-
-#define Button_PIN                         GPIO_PIN_0
-#define Button_GPIO_PORT                   GPIOA
-#define Button_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()  
-#define Button_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()  
-
-#define Buttonx_GPIO_CLK_ENABLE(__INDEX__)  do {Button_GPIO_CLK_ENABLE(); } while(0)
-
-#define Buttonx_GPIO_CLK_DISABLE(__INDEX__) Button_GPIO_CLK_DISABLE())
 
 /**
   * @}
@@ -70,6 +53,28 @@
 #define USARTx_IRQn                      USART1_IRQn
 #define USARTx_IRQHandler                USART1_IRQHandler
 
+
+
+/* Definition for SPIx clock resources */
+#define SPIx                             SPI2
+#define SPIx_CLK_ENABLE()                __HAL_RCC_SPI2_CLK_ENABLE()
+#define SPIx_SCK_GPIO_CLK_ENABLE()       __HAL_RCC_GPIOB_CLK_ENABLE()
+#define SPIx_MISO_GPIO_CLK_ENABLE()      __HAL_RCC_GPIOB_CLK_ENABLE()
+#define SPIx_MOSI_GPIO_CLK_ENABLE()      __HAL_RCC_GPIOB_CLK_ENABLE()
+
+/* Definition for SPIx Pins */
+#define SPIx_SCK_PIN                     GPIO_PIN_13
+#define SPIx_SCK_GPIO_PORT               GPIOB
+#define SPIx_MISO_PIN                    GPIO_PIN_14
+#define SPIx_MISO_GPIO_PORT              GPIOB
+#define SPIx_MOSI_PIN                    GPIO_PIN_15
+#define SPIx_MOSI_GPIO_PORT              GPIOB
+
+/* Definition for SPIx's NVIC */
+#define SPIx_IRQn                        SPI2_IRQn
+#define SPIx_IRQHandler                  SPI2_IRQHandler
+
+
 /* Size of Trasmission buffer */
 #define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
 /* Size of Reception buffer */
@@ -80,6 +85,95 @@
 /* Exported functions ------------------------------------------------------- */
 
 
+/** @defgroup DRDY Constants
+  * @{
+  */
+#define DRDYn                             1
 
+#define DRDY_PIN                         GPIO_PIN_0
+#define DRDY_GPIO_PORT                   GPIOA
+#define DRDY_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()  
+#define DRDY_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()  
+
+#define DRDYx_GPIO_CLK_ENABLE(__INDEX__)  do {DRDY_GPIO_CLK_ENABLE(); } while(0)
+
+#define DRDYx_GPIO_CLK_DISABLE(__INDEX__) DRDY_GPIO_CLK_DISABLE())
+
+/**
+  * @}
+  */ 
+
+/** @defgroup CS Constants
+  * @{
+  */
+#define CSn                             1
+
+#define CS_PIN                         GPIO_PIN_3
+#define CS_GPIO_PORT                   GPIOA
+#define CS_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()  
+#define CS_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()  
+
+#define CSx_GPIO_CLK_ENABLE(__INDEX__)  do {CS_GPIO_CLK_ENABLE(); } while(0)
+
+#define CSx_GPIO_CLK_DISABLE(__INDEX__) CS_GPIO_CLK_DISABLE())
+
+/**
+  * @}
+  */ 
+
+
+/** @defgroup START Constants
+  * @{
+  */
+#define STARTn                             1
+
+#define START_PIN                         GPIO_PIN_4
+#define START_GPIO_PORT                   GPIOA
+#define START_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()  
+#define START_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()  
+
+#define STARTx_GPIO_CLK_ENABLE(__INDEX__)  do {START_GPIO_CLK_ENABLE(); } while(0)
+
+#define STARTx_GPIO_CLK_DISABLE(__INDEX__) START_GPIO_CLK_DISABLE())
+
+/**
+  * @}
+  */ 
+
+/** @defgroup RESET Constants
+  * @{
+  */
+#define RESETn                             1
+
+#define RESET_PIN                         GPIO_PIN_5
+#define RESET_GPIO_PORT                   GPIOA
+#define RESET_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()  
+#define RESET_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()  
+
+#define RESETx_GPIO_CLK_ENABLE(__INDEX__)  do {RESET_GPIO_CLK_ENABLE(); } while(0)
+
+#define RESETx_GPIO_CLK_DISABLE(__INDEX__) RESET_GPIO_CLK_DISABLE())
+
+/**
+  * @}
+  */ 
+
+/** @defgroup CLKSEL Constants
+  * @{
+  */
+#define CLKSELn                             1
+
+#define CLKSEL_PIN                         GPIO_PIN_6
+#define CLKSEL_GPIO_PORT                   GPIOA
+#define CLKSEL_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()  
+#define CLKSEL_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()  
+
+#define CLKSELx_GPIO_CLK_ENABLE(__INDEX__)  do {CLKSEL_GPIO_CLK_ENABLE(); } while(0)
+
+#define CLKSELx_GPIO_CLK_DISABLE(__INDEX__) CLKSEL_GPIO_CLK_DISABLE())
+
+/**
+  * @}
+  */ 
 
 #endif

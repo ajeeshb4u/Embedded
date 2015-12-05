@@ -57,6 +57,7 @@
 //extern SPI_HandleTypeDef SpiHandle;
 extern TIM_HandleTypeDef    TimHandle;
 extern UART_HandleTypeDef UartHandle;
+//extern SPI_HandleTypeDef SpiHandle;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -202,6 +203,7 @@ void TIMx_IRQHandler(void)
   */
 void SPIx_IRQHandler(void)
 {
+//	HAL_SPI_IRQHandler(&SpiHandle);
 //  HAL_SPI_IRQHandler(&SpiHandle);
 }
 
@@ -214,7 +216,7 @@ void SPIx_IRQHandler(void)
   */
 void EXTI0_IRQHandler(void)
 {
-  HAL_GPIO_EXTI_IRQHandler(Button_PIN);
+  HAL_GPIO_EXTI_IRQHandler(DRDY_PIN);
 }
 
 
