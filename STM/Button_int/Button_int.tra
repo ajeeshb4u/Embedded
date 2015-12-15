@@ -59,7 +59,7 @@
 ### ADS-LD Output File: 'Button_int.axf'
 ### ADS-LD Command File: 'Button_int.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'Button_int.lnp', Handle=0x00000528
+### Creating CmdFile 'Button_int.lnp', Handle=0x000002F8
 ### Writing '.lnp' file
 ### ADS-LD Command file 'Button_int.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

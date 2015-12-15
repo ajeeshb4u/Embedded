@@ -13,14 +13,20 @@ enum {
 };
 
 /* Private macro -------------------------------------------------------------*/
+/*GPIO init declaration*/
+GPIO_PinState DRDY_bitstatus=GPIO_PIN_RESET,bitstatus2=GPIO_PIN_RESET;
+
 /* Private variables ---------------------------------------------------------*/
 /* TIM handle declaration */
 TIM_HandleTypeDef    TimHandle;
 UART_HandleTypeDef UartHandle;
+SPI_HandleTypeDef SpiHandle;
 
 __IO ITStatus UartReady = RESET;
 __IO ITStatus RxReady = RESET;
 __IO uint32_t uwPrescalerValue = 0;  /* Prescaler for timer */
+/* SPI transfer state */
+__IO uint32_t wTransferState = TRANSFER_WAIT;
 
 
 
@@ -29,7 +35,16 @@ uint8_t aTxBuffer[] = "**UART_TwoBoards_ComIT**";
 
 /* Buffer used for UART reception */
 uint8_t aRxBuffer[10];
-//uint8_t aRxBuffer_cpy[10];
+uint8_t aRxBuffer_cpy[0x13];
+
+/* SPI transmission buffer */
+uint8_t aTxBuffer_spi[0x13] = {1};
+uint8_t aRxBuffer_spi[0x13] = {0};
+
+/* ADS o/p seperation variables */
+uint8_t head_Rx=0, Loff_Statp=0, Loff_Statn=0, Gpio_bits=0;
+int16_t LeadI=0, LeadII=0, LeadIII=0, LeadV1=0, LeadV2=0;
+int16_t LeadV3=0, LeadV4=0, LeadV5=0, LeadV6=0;
 
 	
 void SystemClock_Config(void);		/* Init clock */
@@ -62,6 +77,32 @@ int main(void)
 /*Configure the clock*/	
 	SystemClock_Config();	
 //	HAL_Delay(10);
+	
+	  /*##-1- Configure the SPI peripheral #######################################*/
+  /* Set the SPI parameters */
+  SpiHandle.Instance               = SPIx;
+  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+  SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
+  SpiHandle.Init.CLKPhase          = SPI_PHASE_2EDGE;
+  SpiHandle.Init.CLKPolarity       = SPI_POLARITY_LOW;
+  SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
+  SpiHandle.Init.FirstBit          = SPI_FIRSTBIT_MSB;
+  SpiHandle.Init.TIMode            = SPI_TIMODE_DISABLE;
+  SpiHandle.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
+  SpiHandle.Init.CRCPolynomial     = 7;
+  SpiHandle.Init.NSS               = SPI_NSS_SOFT;
+
+	SpiHandle.Init.Mode = SPI_MODE_MASTER;
+ if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
+  {
+    /* Initialization Error */
+    Error_Handler();
+  }
+
+ /* SPI block is enabled prior calling SPI transmit/receive functions, in order to get CLK signal properly pulled down.
+     Otherwise, SPI CLK signal is not clean on this board and leads to errors during transfer */
+  __HAL_SPI_ENABLE(&SpiHandle);
+
 	
 /*configure PC13 as LED*/
 	GENLED_Init();
@@ -99,10 +140,10 @@ int main(void)
   }
 
 /*##Put UART peripheral in reception process ###########################*/  
-  if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
-  {
-    Error_Handler();
-  }
+//   if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
+//   {
+//     Error_Handler();
+//   }
 
   /*##-1- Configure the TIM peripheral #######################################*/
   /* -----------------------------------------------------------------------
@@ -144,24 +185,81 @@ uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
   TimHandle.Init.RepetitionCounter = 0;
 
-  if (HAL_TIM_Base_Init(&TimHandle) != HAL_OK)
-  {
-    /* Initialization Error */
-    Error_Handler();
-  }
+//   if (HAL_TIM_Base_Init(&TimHandle) != HAL_OK)
+//   {
+//     /* Initialization Error */
+//     Error_Handler();
+//   }
 
   /*##-2- Start the TIM Base generation in interrupt mode ####################*/
   /* Start Channel1 */
-  if (HAL_TIM_Base_Start_IT(&TimHandle) != HAL_OK)
-  {
-    /* Starting Error */
-    Error_Handler();
-  }
+//   if (HAL_TIM_Base_Start_IT(&TimHandle) != HAL_OK)
+//   {
+//     /* Starting Error */
+//     Error_Handler();
+//   }
 
 	while(1)
 	{
+		if (DRDY_bitstatus==GPIO_PIN_SET)
+		{
+			  /*##-2- Start the Full Duplex Communication process ########################*/  
+				/* While the SPI in TransmitReceive process, user can transmit data through 
+					"aTxBuffer" buffer & receive data through "aRxBuffer" */
+			if(HAL_SPI_TransmitReceive_IT(&SpiHandle, (uint8_t*)aTxBuffer_spi, (uint8_t *)aRxBuffer_spi, 0x13) != HAL_OK)
+			{
+				/* Transfer error in transmission process */
+				Error_Handler();
+			}
+
+			DRDY_bitstatus=GPIO_PIN_RESET;
+		}
+
+		if(wTransferState == TRANSFER_COMPLETE)
+		{
+			// /* ADS o/p seperation variables */
+			// uint8_t head_Rx=0, Loff_Statp=0, Loff_Statn=0, Gpio_bits=0;
+			// int16_t LeadI=0, LeadII=0, LeadIII=0, LeadV1=0, LeadV2=0;
+			// int16_t LeadV3=0, LeadV4=0, LeadV5=0, LeadV6=0;
+			head_Rx=aRxBuffer_cpy[0]&0xf0;
+			if (head_Rx==0xC0)
+			{
+			Loff_Statp=aRxBuffer_cpy[0]&0x0f+aRxBuffer_cpy[1]&0xf0;
+			Loff_Statn=aRxBuffer_cpy[1]&0x0f+aRxBuffer_cpy[2]&0xf0;
+			Gpio_bits=aRxBuffer_cpy[2]&0x0f;
+
+			LeadV1=~aRxBuffer_cpy[3]+1;
+			LeadV1=(LeadV1 << 8)+ (~aRxBuffer_cpy[4]+1);
+			LeadV5=~aRxBuffer_cpy[5]+1;
+			LeadV5=(LeadV5 << 8)+ (~aRxBuffer_cpy[6]+1);
+			LeadV4=~aRxBuffer_cpy[7]+1;
+			LeadV4=(LeadV4 << 8)+ (~aRxBuffer_cpy[8]+1);
+			LeadV3=~aRxBuffer_cpy[9]+1;
+			LeadV3=(LeadV3 << 8)+ (~aRxBuffer_cpy[10]+1);
+			LeadV2=~aRxBuffer_cpy[11]+1;
+			LeadV2=(LeadV2 << 8)+ (~aRxBuffer_cpy[12]+1);
+			LeadII=~aRxBuffer_cpy[13]+1;
+			LeadII=(LeadII << 8)+ (~aRxBuffer_cpy[14]+1);
+			LeadI=~aRxBuffer_cpy[15]+1;
+			LeadI=(LeadI << 8)+ (~aRxBuffer_cpy[16]+1);
+			LeadV6=~aRxBuffer_cpy[17]+1;
+			LeadV6=(LeadV6 << 8)+ (~aRxBuffer_cpy[18]+1);
+			}
+
+		  /*##Start the transmission process #####################################*/  
+			/* While the UART in reception process, user can transmit data through 
+				"aTxBuffer" buffer */
+			if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aRxBuffer_cpy, 0x13)!= HAL_OK)
+			{
+			Error_Handler();
+			}
+			
+			wTransferState = TRANSFER_WAIT;
+		}
+		
 	}
 }
+
 
 /**
   * @brief  System Clock Configuration
@@ -243,7 +341,7 @@ void	DRDY_Init(void)
     HAL_GPIO_Init(DRDY_GPIO_PORT, &DRDY_InitStruct);
 
 	/* Enable and set DRDY EXTI Interrupt to the lowest priority */
-    HAL_NVIC_SetPriority((IRQn_Type)(EXTI0_IRQn), 0x0F, 0);
+    HAL_NVIC_SetPriority((IRQn_Type)(EXTI0_IRQn), 0x0a, 0);
     HAL_NVIC_EnableIRQ((IRQn_Type)(EXTI0_IRQn));
 
 }
@@ -258,8 +356,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == DRDY_PIN)
   {
-	startup_led();	
-//HAL_GPIO_TogglePin(GENLED_GPIO_PORT, GENLED_PIN);		
+		DRDY_bitstatus=GPIO_PIN_SET;
   }
 }
 
@@ -287,7 +384,6 @@ void startup_led(void)
 static void Error_Handler(void)
 {
 	NVIC_SystemReset();
-//  while (1);
 }
 
 
@@ -297,16 +393,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /*##Start the transmission process #####################################*/  
   /* While the UART in reception process, user can transmit data through 
      "aTxBuffer" buffer */
-  if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
-  {
-    Error_Handler();
-  }
-  /*##Wait for the end of the transfer ###################################*/   
-  while (UartReady != SET)
-  {
-  }
-  /* Reset transmission flag */
-  UartReady = RESET;
+//   if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
+//   {
+//     Error_Handler();
+//   }
+//   /*##Wait for the end of the transfer ###################################*/   
+//   while (UartReady != SET)
+//   {
+//   }
+//   /* Reset transmission flag */
+//   UartReady = RESET;
 }
 
 /**
@@ -337,12 +433,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
   {
     Error_Handler();
   }
-// 	for (i=0;i<10;i++)
-// 	{
-// 		aRxBuffer_cpy[i]=aRxBuffer[i];
-// 		aRxBuffer[i]=0;
-// 	}
-  /* Set transmission flag: transfer complete */
   RxReady = SET;
 }
 
@@ -428,4 +518,34 @@ void ADS_RESET(void)
 	HAL_GPIO_WritePin(CS_GPIO_PORT, CS_PIN, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(CLKSEL_GPIO_PORT, CLKSEL_PIN, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(START_GPIO_PORT, START_PIN, GPIO_PIN_SET);
+}
+
+/**
+  * @brief  TxRx Transfer completed callback.
+  * @param  hspi: SPI handle
+  * @note   This example shows a simple way to report end of Interrupt TxRx transfer, and 
+  *         you can add your own implementation. 
+  * @retval None
+  */
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+	int i;
+	for(i=0;i<0x13;i++)
+	{
+	aRxBuffer_cpy[i]= aRxBuffer_spi[i];
+	}
+
+  wTransferState = TRANSFER_COMPLETE;
+}
+
+/**
+  * @brief  SPI error callbacks.
+  * @param  hspi: SPI handle
+  * @note   This example shows a simple way to report transfer error, and you can
+  *         add your own implementation.
+  * @retval None
+  */
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+{
+  wTransferState = TRANSFER_ERROR;
 }
