@@ -1,8 +1,5 @@
 #include "main.h"
 
-/** @addtogroup TIM_TimeBase
-  * @{
-  */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -62,6 +59,7 @@ void ADS_RESET(void);							/* RESET or Initialize the ADS parameter pins */
 
 int main(void)
 {
+/********************************HAL INIT START***************************************************/
   /* STM32F103xB HAL library initialization:
        - Configure the Flash prefetch
        - Systick timer is configured by default as source of time base, but user 
@@ -73,12 +71,15 @@ int main(void)
        - Low Level Initialization
      */
   HAL_Init();
+/********************************HAL INIT END***************************************************/
 
-/*Configure the clock*/	
+/********************************Clock Config***************************************************/
+	/*Configure the clock*/	
 	SystemClock_Config();	
-//	HAL_Delay(10);
+/***********************************************************************************/
 	
-	  /*##-1- Configure the SPI peripheral #######################################*/
+/********************************SPI INIT***************************************************/
+	/*##-1- Configure the SPI peripheral #######################################*/
   /* Set the SPI parameters */
   SpiHandle.Instance               = SPIx;
   SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
@@ -102,19 +103,24 @@ int main(void)
  /* SPI block is enabled prior calling SPI transmit/receive functions, in order to get CLK signal properly pulled down.
      Otherwise, SPI CLK signal is not clean on this board and leads to errors during transfer */
   __HAL_SPI_ENABLE(&SpiHandle);
+/***********************************************************************************/
 
-	
+/********************************PIN Config***************************************************/
 /*configure PC13 as LED*/
-	GENLED_Init();
-	startup_led();
-	DRDY_Init();
-	CS_Config();
-	START_Config();
-	RESET_Config();
-	CLKSEL_Config();
+	GENLED_Init();		//PC13 as LED
+	startup_led();		//Startup LED sequence
+	DRDY_Init();			//PA0 as /DRDY
+	CS_Config();			//PA3 as CS
+	START_Config();		//PA4 as start
+	RESET_Config();		//PA5 as RESET
+	CLKSEL_Config();	//PA6 as CLKSEL
+/***********************************************************************************/
 	
+/***********************************ADS RESET Sequence************************************************/
 	ADS_RESET();
+/***********************************************************************************/
 
+/***************************************UART INIT********************************************/
 	  /*##-1- Configure the UART peripheral ######################################*/
   /* Put the USART peripheral in the Asynchronous mode (UART Mode) */
   /* UART configured as follows:
@@ -140,11 +146,13 @@ int main(void)
   }
 
 /*##Put UART peripheral in reception process ###########################*/  
-//   if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
-//   {
-//     Error_Handler();
-//   }
+   if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 0x0a) != HAL_OK)
+   {
+     Error_Handler();
+   }
+/***********************************************************************************/
 
+/****************************TIMER INIT*******************************************************/
   /*##-1- Configure the TIM peripheral #######################################*/
   /* -----------------------------------------------------------------------
     In this example TIM3 input clock (TIM3CLK)  is set to APB1 clock (PCLK1) x2,
@@ -198,6 +206,7 @@ uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
 //     /* Starting Error */
 //     Error_Handler();
 //   }
+/***********************************************************************************/
 
 	while(1)
 	{
