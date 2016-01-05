@@ -1164,7 +1164,15 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, uint8_t *p
     hspi->pRxBuffPtr   = pRxData;
     hspi->RxXferSize   = Size;
     hspi->RxXferCount  = Size;
-
+/********************My edit***************************/
+/*		if(Size==0x02)
+	{
+    hspi->RxXferSize   = 1;
+    hspi->RxXferCount  = 1;
+	}
+		*/
+/********************************************************/	
+		
     /* Reset CRC Calculation */
     if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE)
     {

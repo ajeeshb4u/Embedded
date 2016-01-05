@@ -31,12 +31,16 @@ __IO uint32_t wTransferState = TRANSFER_WAIT;
 uint8_t aTxBuffer[] = "**UART_TwoBoards_ComIT**";
 
 /* Buffer used for UART reception */
-uint8_t aRxBuffer[10];
+uint8_t aRxBuffer[10],cpy_cnt=0;
 uint8_t aRxBuffer_cpy[0x13];
 
 /* SPI transmission buffer */
 uint8_t aTxBuffer_spi[0x13] = {1};
 uint8_t aRxBuffer_spi[0x13] = {0};
+uint8_t read_spi[0x02]= {0x10 ,0x08};
+uint8_t stop_spi[0x02]= {0x0A ,0x11};
+uint8_t read_spi_reg[0x02]= {0x20, 0x01 };
+
 
 /* ADS o/p seperation variables */
 uint8_t head_Rx=0, Loff_Statp=0, Loff_Statn=0, Gpio_bits=0;
@@ -207,9 +211,23 @@ uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
 //     Error_Handler();
 //   }
 /***********************************************************************************/
+/* continous data read command
+if(HAL_SPI_TransmitReceive_IT(&SpiHandle, (uint8_t*)read_spi, (uint8_t *)aRxBuffer_spi, 0x02) != HAL_OK)
+			{
+				Error_Handler();
+			}
+*/
 
+//stop continous read
+		if(HAL_SPI_TransmitReceive_IT(&SpiHandle, (uint8_t*)read_spi_reg, (uint8_t *)aRxBuffer_spi, 0x04) != HAL_OK)
+		{
+			Error_Handler();
+		}
+
+			
 	while(1)
 	{
+		//When data is ready
 		if (DRDY_bitstatus==GPIO_PIN_SET)
 		{
 			  /*##-2- Start the Full Duplex Communication process ########################*/  
@@ -220,10 +238,11 @@ uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
 				/* Transfer error in transmission process */
 				Error_Handler();
 			}
-
+		
 			DRDY_bitstatus=GPIO_PIN_RESET;
 		}
 
+		//19 bytes of data has been received through SPI
 		if(wTransferState == TRANSFER_COMPLETE)
 		{
 			// /* ADS o/p seperation variables */
@@ -253,6 +272,7 @@ uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
 			LeadI=(LeadI << 8)+ (~aRxBuffer_cpy[16]+1);
 			LeadV6=~aRxBuffer_cpy[17]+1;
 			LeadV6=(LeadV6 << 8)+ (~aRxBuffer_cpy[18]+1);
+
 			}
 
 		  /*##Start the transmission process #####################################*/  
@@ -266,8 +286,18 @@ uwPrescalerValue = 14400;	/* For 1 sec cnt = 72000000 */
 			wTransferState = TRANSFER_WAIT;
 		}
 		
-	}
-}
+		//10 bytes of data has been received through UART
+		if(RxReady==SET)
+		{
+			for(cpy_cnt=0;cpy_cnt<10;cpy_cnt++)
+			{
+				aRxBuffer[cpy_cnt]=0;
+			}
+			RxReady=RESET;
+		}
+		
+	}//while(1)
+}//main()
 
 
 /**
@@ -399,19 +429,6 @@ static void Error_Handler(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 //		HAL_GPIO_TogglePin(CLKSEL_GPIO_PORT, CLKSEL_PIN);
-  /*##Start the transmission process #####################################*/  
-  /* While the UART in reception process, user can transmit data through 
-     "aTxBuffer" buffer */
-//   if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxBuffer, TXBUFFERSIZE)!= HAL_OK)
-//   {
-//     Error_Handler();
-//   }
-//   /*##Wait for the end of the transfer ###################################*/   
-//   while (UartReady != SET)
-//   {
-//   }
-//   /* Reset transmission flag */
-//   UartReady = RESET;
 }
 
 /**
@@ -526,7 +543,7 @@ void ADS_RESET(void)
 	
 	HAL_GPIO_WritePin(CS_GPIO_PORT, CS_PIN, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(CLKSEL_GPIO_PORT, CLKSEL_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(START_GPIO_PORT, START_PIN, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(START_GPIO_PORT, START_PIN, GPIO_PIN_RESET);
 }
 
 /**

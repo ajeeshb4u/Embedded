@@ -1,0 +1,5 @@
+-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\inc -I.\STM32F1xx_HAL_Driver\Inc -I.\STM32F1xx_HAL_Driver\Src -I.\CMSIS\Device\ST\STM32F1xx\Include 
+-I C:\Keil\ARM\RV31\INC 
+-I C:\Keil\ARM\CMSIS\Include 
+-I C:\Keil\ARM\Inc\ST\STM32F10x 
+-o "stm32f1xx_hal_tim_ex.o" --omf_browse "stm32f1xx_hal_tim_ex.crf" --depend "stm32f1xx_hal_tim_ex.d" "STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c"
