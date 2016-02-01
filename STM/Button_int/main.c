@@ -219,10 +219,10 @@ if(HAL_SPI_TransmitReceive_IT(&SpiHandle, (uint8_t*)read_spi, (uint8_t *)aRxBuff
 */
 
 //stop continous read
-		if(HAL_SPI_TransmitReceive_IT(&SpiHandle, (uint8_t*)read_spi_reg, (uint8_t *)aRxBuffer_spi, 0x04) != HAL_OK)
-		{
-			Error_Handler();
-		}
+//		if(HAL_SPI_TransmitReceive_IT(&SpiHandle, (uint8_t*)read_spi_reg, (uint8_t *)aRxBuffer_spi, 0x04) != HAL_OK)
+//		{
+//			Error_Handler();
+//		}
 
 			
 	while(1)
@@ -543,7 +543,7 @@ void ADS_RESET(void)
 	
 	HAL_GPIO_WritePin(CS_GPIO_PORT, CS_PIN, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(CLKSEL_GPIO_PORT, CLKSEL_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(START_GPIO_PORT, START_PIN, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(START_GPIO_PORT, START_PIN, GPIO_PIN_SET);
 }
 
 /**
